@@ -27,9 +27,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
       <main>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container justify="center">
-            <Grid item>
-              {children}
-            </Grid>
+            {children}
           </Grid>
         </Container>
       </main>
