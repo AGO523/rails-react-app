@@ -7,6 +7,7 @@ import ChatRooms from "components/pages/ChatRooms"
 import ChatRoom from "components/pages/ChatRoom"
 import Users from "components/pages/Users"
 import SignUp from "components/pages/SignUp"
+import Root from "components/pages/Root"
 import SignIn from "components/pages/SignIn"
 import NotFound from "components/pages/NotFound"
 
@@ -68,6 +69,7 @@ const App: React.FC = () => {
       <AuthContext.Provider value={{ loading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
         <CommonLayout>
           <Switch>
+            <Route exact path="/" component={Root} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Private>

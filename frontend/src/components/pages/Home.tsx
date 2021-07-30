@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-// ホーム（マイページ的な）
+// ホーム（マイページ）
 const Home: React.FC = () => {
   const { isSignedIn, setIsSignedIn, currentUser, setCurrentUser } = useContext(AuthContext)
 
