@@ -91,7 +91,7 @@ const Header: React.FC = () => {
         <Toolbar>
           <Typography
             component={Link}
-            to="/users"
+            to="/"
             variant="h6"
             className={classes.title}
           >

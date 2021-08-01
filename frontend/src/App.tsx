@@ -7,12 +7,13 @@ import ChatRooms from "components/pages/ChatRooms"
 import ChatRoom from "components/pages/ChatRoom"
 import Users from "components/pages/Users"
 import SignUp from "components/pages/SignUp"
-import Root from "components/pages/Root"
+import { Root } from "components/pages/Root"
 import SignIn from "components/pages/SignIn"
 import NotFound from "components/pages/NotFound"
 
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
+
 
 // グローバルで扱う変数・関数（contextで管理）
 export const AuthContext = createContext({} as {
