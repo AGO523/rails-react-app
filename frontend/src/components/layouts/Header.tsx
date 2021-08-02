@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   linkBtn: {
     textTransform: "none",
     marginLeft: theme.spacing(1)
+  },
+  bar: {
+    backgroundColor: "#f48fb1"
   }
 }))
 
@@ -87,7 +90,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Typography
             component={Link}

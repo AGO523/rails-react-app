@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 // ユーザー一覧ページ
-const Users: React.FC = () => {
+const Studies: React.FC = () => {
   const { currentUser } = useContext(AuthContext)
   const classes = useStyles()
 
@@ -260,4 +260,4 @@ const Users: React.FC = () => {
   )
 }
 
-export default Users
+export default Studies

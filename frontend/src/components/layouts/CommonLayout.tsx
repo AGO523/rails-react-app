@@ -7,7 +7,7 @@ import Header from "components/layouts/Header"
 
 const useStyles = makeStyles(() => ({
   container: {
-    marginTop: "3rem"
+    marginTop: "2rem"
   }
 }))
 
