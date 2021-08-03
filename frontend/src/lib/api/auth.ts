@@ -8,6 +8,11 @@ export const signUp = (data: SignUpFormData) => {
   return client.post("auth", data)
 }
 
+// // ゲストサインイン
+// export const geustSignin = (data: GeustSignin) => {
+//   return client.post("auth", data)
+// }
+
 // サインイン
 export const signIn = (data: SignInData) => {
   return client.post("auth/sign_in", data)

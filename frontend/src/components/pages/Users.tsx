@@ -244,7 +244,7 @@ const Users: React.FC = () => {
                 to="/"
                 variant="outlined"
                 color="secondary"
-              > 学習内容を確認する
+              > 学習をくわしく見る
             </Button>
             </Grid>
           </Grid>

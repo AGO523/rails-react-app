@@ -307,9 +307,24 @@ const SignUp: React.FC = () => {
                 送信
               </Button>
             </div>
+            <div style={{ textAlign: "right" }} >
+              <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                disabled={!name || !email || !password || !passwordConfirmation ? true : false} // 空欄があった場合はボタンを押せないように
+                className={classes.submitBtn}
+                onClick={handleSubmit}
+              >
+                ゲストログイン
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </form>
+
+
+
       <AlertMessage // エラーが発生した場合はアラートを表示
         open={alertMessageOpen}
         setOpen={setAlertMessageOpen}
