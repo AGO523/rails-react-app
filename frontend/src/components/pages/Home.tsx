@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState, useCallback } from "react"
 import { useHistory } from "react-router-dom"
 import Cookies from "js-cookie"
 
-import { makeStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/styles"
+import { Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -164,7 +165,7 @@ const Home: React.FC = () => {
           <>
             <Card className={classes.card}>
               <CardContent>
-                <Grid container justify="flex-end">
+                <Grid container justify-content="flex-end">
                   <Grid item>
                     <IconButton
                       onClick={() => setEditFormOpen(true)}
@@ -176,7 +177,7 @@ const Home: React.FC = () => {
                     </IconButton>
                   </Grid>
                 </Grid>
-                <Grid container justify="center">
+                <Grid container justify-content="center">
                   <Grid item>
                     <Avatar
                       alt="avatar"
@@ -185,7 +186,7 @@ const Home: React.FC = () => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container justify="center">
+                <Grid container justify-content="center">
                   <Grid item style={{ marginTop: "1.5rem" }}>
                     <Typography variant="body1" component="p" gutterBottom>
                       {currentUser?.name} {currentUserAge()}歳 ({currentUserPrefecture()})

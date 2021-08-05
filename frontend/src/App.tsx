@@ -15,6 +15,8 @@ import NotFound from "components/pages/NotFound"
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
 
+import PostList from "./components/post/PostList"
+
 
 // グローバルで扱う変数・関数（contextで管理）
 export const AuthContext = createContext({} as {
@@ -81,6 +83,7 @@ const App: React.FC = () => {
                 <Route exact path="/studies" component={Studies} />
                 <Route exact path="/chat_rooms" component={ChatRooms} />
                 <Route path="/chatroom/:id" component={ChatRoom} />
+                <Route exact path="/posts" component={PostList} />
                 <Route component={NotFound} />
               </Switch>
             </Private>

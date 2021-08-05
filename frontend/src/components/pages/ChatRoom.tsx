@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react"
 import { RouteComponentProps } from "react-router-dom"
 
-import { makeStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/styles"
+import { Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
 import Avatar from "@material-ui/core/Avatar"
 import TextField from "@material-ui/core/TextField"
@@ -110,7 +111,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
       {
         !loading ? (
           <div style={{ maxWidth: 360 }}>
-            <Grid container justify="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justify-content="center" style={{ marginBottom: "1rem" }}>
               <Grid item>
                 <Avatar
                   alt="avatar"
@@ -130,7 +131,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
             {
               messages.map((message: Message, index: number) => {
                 return (
-                  <Grid key={index} container justify={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
+                  <Grid key={index} container justify-content={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
                     <Grid item>
                       <Box
                         borderRadius={message.userId === otherUser?.id ? "30px 30px 30px 0px" : "30px 30px 0px 30px"}
@@ -157,7 +158,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
                 )
               })
             }
-            <Grid container justify="center" style={{ marginTop: "2rem" }}>
+            <Grid container justify-content="center" style={{ marginTop: "2rem" }}>
               <form className={classes.formWrapper} noValidate autoComplete="off">
                 <TextField
                   required

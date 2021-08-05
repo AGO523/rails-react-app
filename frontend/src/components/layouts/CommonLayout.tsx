@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Container, Grid } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/styles"
 
 import Header from "components/layouts/Header"
 
@@ -26,7 +26,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
       </header>
       <main>
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container justify="center">
+          <Grid container justify-content="center">
             {children}
           </Grid>
         </Container>

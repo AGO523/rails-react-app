@@ -4,7 +4,8 @@ import Cookies from "js-cookie"
 import "date-fns"
 import DateFnsUtils from "@date-io/date-fns" // バージョンに注意（https://stackoverflow.com/questions/59600125/cannot-get-material-ui-datepicker-to-work）
 
-import { makeStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/styles"
+import { Theme } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import TextField from "@material-ui/core/TextField"
 import InputLabel from "@material-ui/core/InputLabel"
@@ -237,7 +238,7 @@ const SignUp: React.FC = () => {
               </Select>
             </FormControl>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justify="space-around">
+              <Grid container justify-content="space-around">
                 <KeyboardDatePicker
                   fullWidth
                   inputVariant="outlined"
