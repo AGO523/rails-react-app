@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 
-import { makeStyles } from "@material-ui/styles"
-import { Theme } from "@material-ui/core/styles"
+import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
 
 import Dialog from "@material-ui/core/Dialog"
@@ -153,7 +152,7 @@ const Users: React.FC = () => {
       {
         !loading ? (
           users?.length > 0 ? (
-            <Grid container justify-content="center">
+            <Grid container justify="center">
               {
                 users?.map((user: User, index: number) => {
                   return (
@@ -200,7 +199,7 @@ const Users: React.FC = () => {
         onClose={() => setUserDetailOpen(false)}
       >
         <DialogContent>
-          <Grid container justify-content="center">
+          <Grid container justify="center">
             <Grid item>
               <Avatar
                 alt="avatar"
@@ -209,7 +208,7 @@ const Users: React.FC = () => {
               />
             </Grid>
           </Grid>
-          <Grid container justify-content="center">
+          <Grid container justify="center">
             <Grid item style={{ marginTop: "1rem" }}>
               <Typography variant="body1" component="p" gutterBottom style={{ textAlign: "center" }}>
                 {user.name} {userAge()}歳 ({userPrefecture()})
@@ -228,7 +227,7 @@ const Users: React.FC = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container justify-content="center">
+          <Grid container justify="center">
             <Button
               variant="outlined"
               onClick={() => isLikedUser(user.id) ? void (0) : handleCreateLike(user)}
@@ -239,7 +238,7 @@ const Users: React.FC = () => {
             >
               {isLikedUser(user.id) ? "いいね済み" : "いいね"}
             </Button>
-            <Grid container justify-content="center">
+            <Grid container justify="center">
               <Button
                 component={Link}
                 to="/"

@@ -3,7 +3,6 @@ import styles from "./Card.module.css"
 import InViewMonitor from "react-inview-monitor"
 
 
-
 type Props = {
   title: string
   description: string
@@ -17,7 +16,7 @@ const Card = (props: Props) => {
           <img src={props.imagePath} alt={props.title} className={styles.img} />
         </InViewMonitor>
         <div className={styles.description}>
-          <InViewMonitor classNameNotInView='hidden' classNameInView='animate__animated animate__InRight slower'>
+          <InViewMonitor classNameNotInView='hidden' classNameInView='animate__animated animate__fadeInRight slower'>
             <h1 className={styles.title}>{props.title}</h1>
           </InViewMonitor>
           <InViewMonitor classNameNotInView='hidden' classNameInView='animate__animated animate__fadeInUp slower'>
