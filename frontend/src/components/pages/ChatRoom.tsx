@@ -49,27 +49,28 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
   const [messages, setMeesages] = useState<Message[]>([])
   const [content, setContent] = useState<string>("")
 
-  const handleGetChatRoom = async () => {
-    try {
-      const res = await getChatRoom(id)
-      console.log(res)
 
-      if (res?.status === 200) {
-        setOtherUser(res?.data.otherUser)
-        setMeesages(res?.data.messages)
-      } else {
-        console.log("No other user")
-      }
-    } catch (err) {
-      console.log(err)
-    }
-
-    setLoading(false)
-  }
 
   useEffect(() => {
+    async function handleGetChatRoom() {
+      try {
+        const res = await getChatRoom(id)
+        console.log(res)
+  
+        if (res?.status === 200) {
+          setOtherUser(res?.data.otherUser)
+          setMeesages(res?.data.messages)
+        } else {
+          console.log("No other user")
+        }
+      } catch (err) {
+        console.log(err)
+      }
+  
+      setLoading(false)
+    }
     handleGetChatRoom()
-  }, [])
+  }, [id])
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()

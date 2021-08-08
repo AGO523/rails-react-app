@@ -8,7 +8,9 @@ import Card from "components/Card/Card"
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
-import { useHistory, Link } from "react-router-dom"
+import { 
+  // useHistory, 
+  Link } from "react-router-dom"
 import { Typography } from "@material-ui/core"
 
 
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Root = () => {
   const classes = useStyles()
-  const history = useHistory()
+  // const history = useHistory()
   return (
     <div className="App">
       <MainImage />
