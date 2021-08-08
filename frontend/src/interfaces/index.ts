@@ -84,3 +84,17 @@ export interface Message {
   content: string
   createdAt?: Date
 }
+
+
+// 投稿機能
+export interface Post {
+  id: string
+  content: string
+  image?: {
+    url: string
+  }
+}
+
+export interface PostApiJson {
+  posts: Post[]
+}

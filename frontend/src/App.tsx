@@ -11,6 +11,7 @@ import SignUp from "components/pages/SignUp"
 import { Root } from "components/pages/Root"
 import SignIn from "components/pages/SignIn"
 import NotFound from "components/pages/NotFound"
+import PostList from "./components/post/PostList"
 
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
@@ -81,6 +82,7 @@ const App: React.FC = () => {
                 <Route exact path="/studies" component={Studies} />
                 <Route exact path="/chat_rooms" component={ChatRooms} />
                 <Route path="/chatroom/:id" component={ChatRoom} />
+                <Route exact path="/posts" component={PostList} />
                 <Route component={NotFound} />
               </Switch>
             </Private>
