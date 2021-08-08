@@ -237,7 +237,7 @@ const SignUp: React.FC = () => {
               </Select>
             </FormControl>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justify="space-around">
+              <Grid container justifyContent="space-around">
                 <KeyboardDatePicker
                   fullWidth
                   inputVariant="outlined"

@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton"
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import PersonIcon from "@material-ui/icons/Person"
 import SearchIcon from "@material-ui/icons/Search"
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble"
 
 import { AuthContext } from "App"
@@ -47,6 +48,15 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <SearchIcon />
+            </IconButton>
+            <IconButton
+              component={Link}
+              to="/posts"
+              edge="start"
+              className={classes.linkBtn}
+              color="inherit"
+            >
+              <BorderColorIcon />
             </IconButton>
             <IconButton
               component={Link}

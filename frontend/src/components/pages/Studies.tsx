@@ -152,7 +152,7 @@ const Studies: React.FC = () => {
       {
         !loading ? (
           users?.length > 0 ? (
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               {
                 users?.map((user: User, index: number) => {
                   return (
@@ -199,7 +199,7 @@ const Studies: React.FC = () => {
         onClose={() => setUserDetailOpen(false)}
       >
         <DialogContent>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <Grid item>
               <Avatar
                 alt="avatar"
@@ -208,7 +208,7 @@ const Studies: React.FC = () => {
               />
             </Grid>
           </Grid>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <Grid item style={{ marginTop: "1rem" }}>
               <Typography variant="body1" component="p" gutterBottom style={{ textAlign: "center" }}>
                 {user.name} {userAge()}歳 ({userPrefecture()})
@@ -227,7 +227,7 @@ const Studies: React.FC = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <Button
               variant="outlined"
               onClick={() => isLikedUser(user.id) ? void (0) : handleCreateLike(user)}
@@ -238,7 +238,7 @@ const Studies: React.FC = () => {
             >
               {isLikedUser(user.id) ? "いいね済み" : "いいね"}
             </Button>
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               <Button
                 component={Link}
                 to="/"

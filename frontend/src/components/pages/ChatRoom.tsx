@@ -110,7 +110,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
       {
         !loading ? (
           <div style={{ maxWidth: 360 }}>
-            <Grid container justify="center" style={{ marginBottom: "1rem" }}>
+            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
               <Grid item>
                 <Avatar
                   alt="avatar"
@@ -130,7 +130,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
             {
               messages.map((message: Message, index: number) => {
                 return (
-                  <Grid key={index} container justify={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
+                  <Grid key={index} container justifyContent={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
                     <Grid item>
                       <Box
                         borderRadius={message.userId === otherUser?.id ? "30px 30px 30px 0px" : "30px 30px 0px 30px"}
@@ -157,7 +157,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
                 )
               })
             }
-            <Grid container justify="center" style={{ marginTop: "2rem" }}>
+            <Grid container justifyContent="center" style={{ marginTop: "2rem" }}>
               <form className={classes.formWrapper} noValidate autoComplete="off">
                 <TextField
                   required
