@@ -1,0 +1,14 @@
+version: "3"
+services:
+  front:
+    build:
+      context: .
+    tty: true
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/frontend/node_modules
+    command: sh -c "yarn start"
+    ports:
+      - "8000:3000"
