@@ -27,7 +27,9 @@ import CancelIcon from "@material-ui/icons/Cancel"
 import { AuthContext } from "App"
 import AlertMessage from "components/utils/AlertMessage"
 import { signUp } from "lib/api/auth"
+import { GuestSignUp } from "lib/api/auth"
 import { SignUpFormData } from "interfaces/index"
+import { GuestSignUpFormData } from "interfaces/index"
 import { prefectures } from "data/prefectures"
 import { genders } from "data/genders"
 
@@ -113,6 +115,23 @@ const SignUp: React.FC = () => {
     return formData
   }
 
+  // フォームデータを作成(ゲストサインアップ)
+  const createGuestSignUpFormData = (): GuestSignUpFormData => {
+    const guestFormData = new FormData()  //GuestFormDataの名称に注意
+
+    guestFormData.append("name", name)
+    guestFormData.append("email", email)
+    guestFormData.append("password", password)
+    guestFormData.append("passwordConfirmation", passwordConfirmation)
+    guestFormData.append("gender", String(gender))
+    guestFormData.append("prefecture", String(prefecture))
+    guestFormData.append("birthday", String(birthday))
+    guestFormData.append("image", image)
+
+    return guestFormData
+  }
+
+  // サインアップの関数
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
@@ -120,6 +139,44 @@ const SignUp: React.FC = () => {
 
     try {
       const res = await signUp(data)
+      console.log(res)
+
+      if (res.status === 200) {
+        Cookies.set("_access_token", res.headers["access-token"])
+        Cookies.set("_client", res.headers["client"])
+        Cookies.set("_uid", res.headers["uid"])
+
+        setIsSignedIn(true)
+        setCurrentUser(res.data.data)
+
+        histroy.push("/home")
+
+        setName("")
+        setEmail("")
+        setPassword("")
+        setPasswordConfirmation("")
+        setGender(undefined)
+        setPrefecture(undefined)
+        setBirthday(null)
+
+        console.log("Signed in successfully!")
+      } else {
+        setAlertMessageOpen(true)
+      }
+    } catch (err) {
+      console.log(err)
+      setAlertMessageOpen(true)
+    }
+  }
+
+  // ゲストサインアップの関数
+  const handleSubmitGuestSignUp = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+
+    const data = createGuestSignUpFormData()
+
+    try {
+      const res = await GuestSignUp(data)
       console.log(res)
 
       if (res.status === 200) {
@@ -312,9 +369,8 @@ const SignUp: React.FC = () => {
                 type="submit"
                 variant="outlined"
                 color="primary"
-                disabled={!name || !email || !password || !passwordConfirmation ? true : false} // 空欄があった場合はボタンを押せないように
                 className={classes.submitBtn}
-                onClick={handleSubmit}
+                onClick={handleSubmitGuestSignUp}
               >
                 ゲストログイン
               </Button>

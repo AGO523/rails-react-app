@@ -10,7 +10,7 @@ export interface SignUpData {
   image: string
 }
 
-export interface GeustSignin {
+export interface GuestSignUpData {
   name: string
   email: string
   password: string
@@ -21,6 +21,10 @@ export interface GeustSignin {
 }
 
 export interface SignUpFormData extends FormData {
+  append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
+}
+
+export interface GuestSignUpFormData extends FormData {
   append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
