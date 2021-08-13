@@ -1,5 +1,5 @@
 import client from "lib/api/client"
-import { Like } from "interfaces/index"
+import { LikeFormData } from "interfaces/index"
 
 import Cookies from "js-cookie"
 
@@ -15,6 +15,6 @@ export const getLikes = () => {
 }
 
 // いいねを作成
-export const createLike = (data: Like) => {
+export const createLike = (data: LikeFormData) => {
   return client.post("likes", data)
 }

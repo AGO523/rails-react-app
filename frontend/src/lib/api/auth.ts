@@ -1,17 +1,18 @@
 import client from "lib/api/client"
 import Cookies from "js-cookie"
 
-import { SignUpFormData, SignInData, GuestSignUpFormData } from "interfaces/index"
+import { SignUpFormData, SignInFormData, GuestSignUpFormData } from "interfaces/index"
 
 // サインアップ
 export const signUp = (data: SignUpFormData) => {
   return client.post("auth", data)
 }
 
-// ゲストログイン
-// export const geustlogin = (data: SignUpFormData) => {
-//   return client.post("auth/geustlogin", data)
+// // ゲストサインイン
+// export const geustSignin = (data: GeustSignin) => {
+//   return client.post("auth", data)
 // }
+
 
 // ゲストサインアップ
 export const GuestSignUp = (data: GuestSignUpFormData) => {
@@ -19,7 +20,7 @@ export const GuestSignUp = (data: GuestSignUpFormData) => {
 }
 
 // サインイン
-export const signIn = (data: SignInData) => {
+export const signIn = (data: SignInFormData) => {
   return client.post("auth/sign_in", data)
 }
 
