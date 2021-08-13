@@ -27,7 +27,7 @@ import CancelIcon from "@material-ui/icons/Cancel"
 import { AuthContext } from "App"
 import AlertMessage from "components/utils/AlertMessage"
 import { signUp } from "lib/api/auth"
-import { GuestSignUp } from "lib/api/auth"
+import { guestSignUp } from "lib/api/auth"
 import { SignUpFormData } from "interfaces/index"
 import { GuestSignUpFormData } from "interfaces/index"
 import { prefectures } from "data/prefectures"
@@ -176,7 +176,7 @@ const SignUp: React.FC = () => {
     const data = createGuestSignUpFormData()
 
     try {
-      const res = await GuestSignUp(data)
+      const res = await guestSignUp(data)
       console.log(res)
 
       if (res.status === 200) {

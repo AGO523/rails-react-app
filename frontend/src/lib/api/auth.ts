@@ -14,8 +14,8 @@ export const signUp = (data: SignUpFormData) => {
 // }
 
 // ゲストサインアップ
-export const GuestSignUp = (data: GuestSignUpFormData) => {
-  return client.post("auth/guest_sign_up", data)
+export const guestSignUp = (data: GuestSignUpFormData) => {
+  return client.post("auth", data)
 }
 
 // サインイン
