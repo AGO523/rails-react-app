@@ -12,13 +12,13 @@ import Button from "@material-ui/core/Button"
 import Divider from "@material-ui/core/Divider"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
-
+import { LikeFormData } from "interfaces/index"
 import AlertMessage from "components/utils/AlertMessage"
 
 import { prefectures } from "data/prefectures"
 import { getUsers } from "lib/api/users"
 import { getLikes, createLike } from "lib/api/likes"
-import { User, Like } from "interfaces/index"
+import { User, LikeData } from "interfaces/index"
 
 import { AuthContext } from "App"
 
@@ -55,7 +55,7 @@ const Studies: React.FC = () => {
   const [user, setUser] = useState<User>(initialUserState)
   const [userDetailOpen, setUserDetailOpen] = useState<boolean>(false)
   const [likedUsers, setLikedUsers] = useState<User[]>([])
-  const [likes, setLikes] = useState<Like[]>([])
+  const [likes, setLikes] = useState<LikeData[]>([])
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
   // 生年月日から年齢を計算する 年齢 = floor((今日 - 誕生日) / 10000)
@@ -74,12 +74,20 @@ const Studies: React.FC = () => {
     return prefectures[(user.prefecture) - 1]
   }
 
+  // フォームデータを作成
+  const createFormData = (): LikeFormData => {
+    const formData = new FormData()
+
+    formData.append("fromUserId", String(currentUser?.id))
+    formData.append("toUserId", String(user.id))
+
+    return formData
+  }
+
   // いいね作成
   const handleCreateLike = async (user: User) => {
-    const data: Like = {
-      fromUserId: currentUser?.id,
-      toUserId: user.id
-    }
+    
+    const data = createFormData()
 
     try {
       const res = await createLike(data)
