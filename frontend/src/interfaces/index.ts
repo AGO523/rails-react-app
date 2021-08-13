@@ -10,6 +10,19 @@ export interface SignUpData {
   image: string
 }
 
+// サインイン
+export interface SignInData {
+  email: string
+  password: string
+}
+
+// いいね
+export interface LikeData {
+  id?: number
+  fromUserId: number | undefined | null
+  toUserId: number | undefined | null
+}
+
 export interface GuestSignUpData {
   name: string
   email: string
@@ -24,14 +37,16 @@ export interface SignUpFormData extends FormData {
   append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
+export interface SignInFormData extends FormData {
+  append(name: keyof SignInData, value: String | Blob, fileName?: string): any
+}
+
 export interface GuestSignUpFormData extends FormData {
   append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
-// サインイン
-export interface SignInData {
-  email: string
-  password: string
+export interface LikeFormData extends FormData {
+  append(name: keyof LikeData, value: String | Blob | undefined, fileName?: string): any
 }
 
 // ユーザー
@@ -63,13 +78,6 @@ export interface UpdateUserData {
 
 export interface UpdateUserFormData extends FormData {
   append(name: keyof UpdateUserData, value: String | Blob, fileName?: string): any
-}
-
-// いいね
-export interface Like {
-  id?: number
-  fromUserId: number | undefined | null
-  toUserId: number | undefined | null
 }
 
 // チャットルーム

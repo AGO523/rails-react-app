@@ -14,7 +14,7 @@ import Box from "@material-ui/core/Box"
 import { AuthContext } from "App"
 import AlertMessage from "components/utils/AlertMessage"
 import { signIn } from "lib/api/auth"
-import { SignInData } from "interfaces/index"
+import { SignInFormData } from "interfaces/index"
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -51,13 +51,19 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState<string>("")
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
+  const createFormData = (): SignInFormData => {
+    const formData = new FormData()
+
+    formData.append("email", email)
+    formData.append("password", password)
+
+    return formData
+  }
+
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data: SignInData = {
-      email: email,
-      password: password
-    }
+    const data = createFormData()
 
     try {
       const res = await signIn(data)
