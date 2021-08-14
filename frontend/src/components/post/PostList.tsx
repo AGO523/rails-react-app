@@ -5,13 +5,14 @@ import { makeStyles } from "@material-ui/core/styles"
 
 import PostForm from "./PostForm"
 import PostItem from "./PostItem"
+import OutlinedCard from "./PostCard"
 
 import { getPosts } from "../../lib/api/posts"
 import { Post } from "../../interfaces/index"
 
 const useStyles = makeStyles(() => ({
   container: {
-    marginTop: "3rem"
+    marginTop: "1rem"
   }
 }))
 
@@ -32,6 +33,7 @@ const PostList: React.FC = () => {
     <Container maxWidth="lg" className={classes.container}>
       <Grid container direction="row" justifyContent="center">
         <Grid item>
+          <OutlinedCard></OutlinedCard>
           <PostForm
             handleGetPosts={handleGetPosts}
           />

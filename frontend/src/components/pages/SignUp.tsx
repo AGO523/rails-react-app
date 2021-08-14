@@ -117,18 +117,18 @@ const SignUp: React.FC = () => {
 
   // フォームデータを作成(ゲストサインアップ)
   const createGuestSignUpFormData = (): GuestSignUpFormData => {
-    const guestFormData = new FormData()  //GuestFormDataの名称に注意
+    const formData = new FormData()
 
-    guestFormData.append("name", name)
-    guestFormData.append("email", email)
-    guestFormData.append("password", password)
-    guestFormData.append("passwordConfirmation", passwordConfirmation)
-    guestFormData.append("gender", String(gender))
-    guestFormData.append("prefecture", String(prefecture))
-    guestFormData.append("birthday", String(birthday))
-    guestFormData.append("image", image)
+    formData.append("name", name)
+    formData.append("email", email)
+    formData.append("password", password)
+    formData.append("passwordConfirmation", passwordConfirmation)
+    formData.append("gender", String(gender))
+    formData.append("prefecture", String(prefecture))
+    formData.append("birthday", String(birthday))
+    formData.append("image", image)
 
-    return guestFormData
+    return formData
   }
 
   // サインアップの関数
