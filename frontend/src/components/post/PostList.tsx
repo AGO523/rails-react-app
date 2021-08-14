@@ -33,7 +33,7 @@ const PostList: React.FC = () => {
     <Container maxWidth="lg" className={classes.container}>
       <Grid container direction="row" justifyContent="center">
         <Grid item>
-          <OutlinedCard></OutlinedCard>
+          <OutlinedCard />
           <PostForm
             handleGetPosts={handleGetPosts}
           />

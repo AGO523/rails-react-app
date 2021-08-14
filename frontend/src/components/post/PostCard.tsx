@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     marginBottom: 12,
+    maxWidth: 320,
   },
   bullet: {
     display: 'inline-block',
@@ -34,9 +35,10 @@ export default function OutlinedCard() {
           色々な学習があります
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          ・先生たちと一緒に学習する内容を知ることができます。
+        </Typography>
+        <Typography variant="body2" component="p">
+          ・気になる先生のページに行って、その先生の詳しいことを知ることができます。
         </Typography>
       </CardContent>
     </Card>
