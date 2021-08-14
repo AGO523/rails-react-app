@@ -11,7 +11,9 @@ import SendIcon from "@material-ui/icons/Send"
 
 import { getChatRoom } from "lib/api/chat_rooms"
 import { createMessage } from "lib/api/messages"
-import { User, Message } from "interfaces/index"
+import { User, MessageData } from "interfaces/index"
+
+import { ChatRoomFormData } from "interfaces/index"
 
 import { AuthContext } from "App"
 
@@ -46,7 +48,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
 
   const [loading, setLoading] = useState<boolean>(true)
   const [otherUser, setOtherUser] = useState<User>()
-  const [messages, setMeesages] = useState<Message[]>([])
+  const [messages, setMeesages] = useState<MessageData[]>([])
   const [content, setContent] = useState<string>("")
 
 
@@ -56,7 +58,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
       try {
         const res = await getChatRoom(id)
         console.log(res)
-  
+
         if (res?.status === 200) {
           setOtherUser(res?.data.otherUser)
           setMeesages(res?.data.messages)
@@ -66,20 +68,32 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
       } catch (err) {
         console.log(err)
       }
-  
+
       setLoading(false)
     }
     handleGetChatRoom()
   }, [id])
 
+  const createFormData = (): ChatRoomFormData => {
+    const formData = new FormData()
+
+    formData.append("chatRoomId", String(id))
+    formData.append("userId", String(currentUser?.id))
+    formData.append("content", content)
+    // formData.append("createdAt", createdAt)
+
+    return formData
+  }
+
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data: Message = {
-      chatRoomId: id,
-      userId: currentUser?.id,
-      content: content
-    }
+    // const data: MessageData = {
+    //   chatRoomId: id,
+    //   userId: currentUser?.id, 
+    //   content: content
+    // }
+    const data = createFormData()
 
     try {
       const res = await createMessage(data)
@@ -129,7 +143,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
               </Grid>
             </Grid>
             {
-              messages.map((message: Message, index: number) => {
+              messages.map((message: MessageData, index: number) => {
                 return (
                   <Grid key={index} container justifyContent={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
                     <Grid item>

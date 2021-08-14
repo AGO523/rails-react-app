@@ -1,7 +1,7 @@
 import client from "lib/api/client"
-import { Message } from "interfaces/index"
+import { MessageData } from "interfaces/index"
 
 // メッセージを作成
-export const createMessage = (data: Message) => {
+export const createMessage = (data: MessageData) => {
   return client.post("messages", data)
 }

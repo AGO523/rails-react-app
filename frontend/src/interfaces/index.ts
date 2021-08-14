@@ -86,11 +86,15 @@ export interface ChatRoom {
     id: number
   }
   otherUser: User,
-  lastMessage: Message
+  lastMessage: MessageData
+}
+
+export interface ChatRoomFormData extends FormData {
+  append(name: keyof MessageData, value: String | Blob, fileName?: string): any
 }
 
 // メッセージ
-export interface Message {
+export interface MessageData {
   chatRoomId: number
   userId: number | undefined
   content: string
