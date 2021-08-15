@@ -39,6 +39,7 @@ interface PostItemProps {
   handleGetPosts: Function
 }
 
+
 const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
   const classes = useStyles()
   const [like, setLike] = useState<boolean>(false)
@@ -64,7 +65,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title="User Name"
+          title={post.id}
         />
         {post.image?.url ?
           <CardMedia
