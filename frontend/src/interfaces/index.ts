@@ -23,26 +23,12 @@ export interface LikeData {
   toUserId: number | undefined | null
 }
 
-export interface GuestSignUpData {
-  name: string
-  email: string
-  password: string
-  passwordConfirmation: string
-  gender: number
-  prefecture: number
-  birthday: Date
-}
-
 export interface SignUpFormData extends FormData {
   append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
 export interface SignInFormData extends FormData {
   append(name: keyof SignInData, value: String | Blob, fileName?: string): any
-}
-
-export interface GuestSignUpFormData extends FormData {
-  append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
 export interface LikeFormData extends FormData {

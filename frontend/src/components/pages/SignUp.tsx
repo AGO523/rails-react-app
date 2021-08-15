@@ -29,7 +29,6 @@ import AlertMessage from "components/utils/AlertMessage"
 import { signUp } from "lib/api/auth"
 import { GuestSignUp } from "lib/api/auth"
 import { SignUpFormData } from "interfaces/index"
-import { GuestSignUpFormData } from "interfaces/index"
 import { prefectures } from "data/prefectures"
 import { genders } from "data/genders"
 
@@ -115,22 +114,6 @@ const SignUp: React.FC = () => {
     return formData
   }
 
-  // フォームデータを作成(ゲストサインアップ)
-  const createGuestSignUpFormData = (): GuestSignUpFormData => {
-    const guestFormData = new FormData()  //GuestFormDataの名称に注意
-
-    guestFormData.append("name", name)
-    guestFormData.append("email", email)
-    guestFormData.append("password", password)
-    guestFormData.append("passwordConfirmation", passwordConfirmation)
-    guestFormData.append("gender", String(gender))
-    guestFormData.append("prefecture", String(prefecture))
-    guestFormData.append("birthday", String(birthday))
-    guestFormData.append("image", image)
-
-    return guestFormData
-  }
-
   // サインアップの関数
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -173,10 +156,8 @@ const SignUp: React.FC = () => {
   const handleSubmitGuestSignUp = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data = createGuestSignUpFormData()
-
     try {
-      const res = await GuestSignUp(data)
+      const res = await GuestSignUp()
       console.log(res)
 
       if (res.status === 200) {
@@ -369,6 +350,7 @@ const SignUp: React.FC = () => {
                 type="submit"
                 variant="outlined"
                 color="primary"
+                disabled={false}
                 className={classes.submitBtn}
                 onClick={handleSubmitGuestSignUp}
               >
