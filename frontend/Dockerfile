@@ -1,7 +1,7 @@
 FROM node:12.5.0-alpine
 
 ENV HOME="/usr/src/app" \
-  WORKDIR="/usr/src/app/frontend" \
+  WORKDIR="/usr/src/app/" \
   LANG=C.UTF-8 \
   TZ=Asia/Tokyo
 
