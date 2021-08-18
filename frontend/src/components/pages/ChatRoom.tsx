@@ -88,11 +88,6 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    // const data: MessageData = {
-    //   chatRoomId: id,
-    //   userId: currentUser?.id, 
-    //   content: content
-    // }
     const data = createFormData()
 
     try {
