@@ -15,11 +15,6 @@ import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 
-import InputLabel from "@material-ui/core/InputLabel"
-import MenuItem from "@material-ui/core/MenuItem"
-import FormControl from "@material-ui/core/FormControl"
-import Select from "@material-ui/core/Select"
-
 import PhotoCamera from "@material-ui/icons/PhotoCamera"
 import Box from "@material-ui/core/Box"
 import CancelIcon from "@material-ui/icons/Cancel"
@@ -30,7 +25,7 @@ import Avatar from "@material-ui/core/Avatar"
 import Divider from "@material-ui/core/Divider"
 
 import { AuthContext } from "App"
-import { prefectures } from "data/prefectures"
+
 
 import { signOut } from "lib/api/auth"
 import { updateUser } from "lib/api/users"
@@ -67,7 +62,6 @@ const Home: React.FC = () => {
 
   const [editFormOpen, setEditFormOpen] = useState<boolean>(false)
   const [name, setName] = useState<string | undefined>(currentUser?.name)
-  const [prefecture, setPrefecture] = useState<number | undefined>(currentUser?.prefecture || 0)
   const [profile, setProfile] = useState<string | undefined>(currentUser?.profile)
   const [image, setImage] = useState<string>("")
   const [preview, setPreview] = useState<string>("")
@@ -95,16 +89,11 @@ const Home: React.FC = () => {
     return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
   }
 
-  // 都道府県
-  const currentUserPrefecture = (): string => {
-    return prefectures[(currentUser?.prefecture || 0) - 1]
-  }
 
   const createFormData = (): UpdateUserFormData => {
     const formData = new FormData()
 
     formData.append("name", name || "")
-    formData.append("prefecture", String(prefecture))
     formData.append("profile", profile || "")
     formData.append("image", image)
 
@@ -188,7 +177,7 @@ const Home: React.FC = () => {
                 <Grid container justifyContent="center">
                   <Grid item style={{ marginTop: "1.5rem" }}>
                     <Typography variant="body1" component="p" gutterBottom>
-                      {currentUser?.name} {currentUserAge()}歳 ({currentUserPrefecture()})
+                      {currentUser?.name} {currentUserAge()}歳
                     </Typography>
                     <Divider style={{ marginTop: "0.5rem" }} />
                     <Typography
@@ -243,26 +232,6 @@ const Home: React.FC = () => {
                     margin="dense"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                   />
-                  <FormControl
-                    variant="outlined"
-                    margin="dense"
-                    fullWidth
-                  >
-                    <InputLabel id="demo-simple-select-outlined-label">都道府県</InputLabel>
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      value={prefecture}
-                      onChange={(e: React.ChangeEvent<{ value: unknown }>) => setPrefecture(e.target.value as number)}
-                      label="都道府県"
-                    >
-                      {
-                        prefectures.map((prefecture, index) =>
-                          <MenuItem key={index + 1} value={index + 1}>{prefecture}</MenuItem>
-                        )
-                      }
-                    </Select>
-                  </FormControl>
                   <TextField
                     placeholder="1000文字以内で書いてください。"
                     variant="outlined"

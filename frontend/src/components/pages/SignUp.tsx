@@ -30,8 +30,7 @@ import { signUp } from "lib/api/auth"
 import { guestSignUp } from "lib/api/auth"
 import { SignUpFormData } from "interfaces/index"
 import { GuestSignUpFormData } from "interfaces/index"
-import { prefectures } from "data/prefectures"
-import { genders } from "data/genders"
+
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -78,8 +77,6 @@ const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
-  const [gender, setGender] = useState<number>()
-  const [prefecture, setPrefecture] = useState<number>()
   const [birthday, setBirthday] = useState<Date | null>(
     new Date("2000-01-01T00:00:00"),
   )
@@ -107,8 +104,6 @@ const SignUp: React.FC = () => {
     formData.append("email", email)
     formData.append("password", password)
     formData.append("passwordConfirmation", passwordConfirmation)
-    formData.append("gender", String(gender))
-    formData.append("prefecture", String(prefecture))
     formData.append("birthday", String(birthday))
     formData.append("image", image)
 
@@ -123,8 +118,6 @@ const SignUp: React.FC = () => {
     formData.append("email", email)
     formData.append("password", password)
     formData.append("passwordConfirmation", passwordConfirmation)
-    formData.append("gender", String(gender))
-    formData.append("prefecture", String(prefecture))
     formData.append("birthday", String(birthday))
     formData.append("image", image)
 
@@ -155,8 +148,6 @@ const SignUp: React.FC = () => {
         setEmail("")
         setPassword("")
         setPasswordConfirmation("")
-        setGender(undefined)
-        setPrefecture(undefined)
         setBirthday(null)
 
         console.log("Signed in successfully!")
@@ -193,8 +184,6 @@ const SignUp: React.FC = () => {
         setEmail("")
         setPassword("")
         setPasswordConfirmation("")
-        setGender(undefined)
-        setPrefecture(undefined)
         setBirthday(null)
 
         console.log("Signed in successfully!")
@@ -253,46 +242,6 @@ const SignUp: React.FC = () => {
               autoComplete="current-password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirmation(e.target.value)}
             />
-            <FormControl
-              variant="outlined"
-              margin="dense"
-              fullWidth
-            >
-              <InputLabel id="demo-simple-select-outlined-label">性別</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={gender}
-                onChange={(e: React.ChangeEvent<{ value: unknown }>) => setGender(e.target.value as number)}
-                label="性別"
-              >
-                {
-                  genders.map((gender: string, index: number) =>
-                    <MenuItem value={index}>{gender}</MenuItem>
-                  )
-                }
-              </Select>
-            </FormControl>
-            <FormControl
-              variant="outlined"
-              margin="dense"
-              fullWidth
-            >
-              <InputLabel id="demo-simple-select-outlined-label">都道府県</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={prefecture}
-                onChange={(e: React.ChangeEvent<{ value: unknown }>) => setPrefecture(e.target.value as number)}
-                label="都道府県"
-              >
-                {
-                  prefectures.map((prefecture, index) =>
-                    <MenuItem key={index + 1} value={index + 1}>{prefecture}</MenuItem>
-                  )
-                }
-              </Select>
-            </FormControl>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justifyContent="space-around">
                 <KeyboardDatePicker
