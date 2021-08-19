@@ -1,5 +1,6 @@
 import React, { useContext, useState, useCallback } from "react"
 import { useHistory } from "react-router-dom"
+import { motion } from "framer-motion";
 import Cookies from "js-cookie"
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
@@ -151,152 +152,158 @@ const Home: React.FC = () => {
       {
         isSignedIn && currentUser ? (
           <>
-            <Card className={classes.card}>
-              <CardContent>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <IconButton
-                      onClick={() => setEditFormOpen(true)}
-                    >
-                      <SettingsIcon
-                        color="action"
-                        fontSize="small"
+            <motion.div
+              animate={{ x: 0 }}
+              initial={{ x: 800 }}
+              exit={{ x: -800 }}
+              transition={{ duration: 0.6 }}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Grid container justifyContent="flex-end">
+                    <Grid item>
+                      <IconButton
+                        onClick={() => setEditFormOpen(true)}
+                      >
+                        <SettingsIcon
+                          color="action"
+                          fontSize="small"
+                        />
+                      </IconButton>
+                    </Grid>
+                  </Grid>
+                  <Grid container justifyContent="center">
+                    <Grid item>
+                      <Avatar
+                        alt="avatar"
+                        src={currentUser?.image.url}
+                        className={classes.avatar}
                       />
-                    </IconButton>
+                    </Grid>
                   </Grid>
-                </Grid>
-                <Grid container justifyContent="center">
-                  <Grid item>
-                    <Avatar
-                      alt="avatar"
-                      src={currentUser?.image.url}
-                      className={classes.avatar}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container justifyContent="center">
-                  <Grid item style={{ marginTop: "1.5rem" }}>
-                    <Typography variant="body1" component="p" gutterBottom>
-                      {currentUser?.name} {currentUserAge()}歳
+                  <Grid container justifyContent="center">
+                    <Grid item style={{ marginTop: "1.5rem" }}>
+                      <Typography variant="body1" component="p" gutterBottom>
+                        {currentUser?.name} {currentUserAge()}歳
                     </Typography>
-                    <Divider style={{ marginTop: "0.5rem" }} />
-                    <Typography
-                      variant="body2"
-                      component="p"
-                      gutterBottom
-                      style={{ marginTop: "0.5rem", fontWeight: "bold" }}
-                    >
-                      自己紹介
+                      <Divider style={{ marginTop: "0.5rem" }} />
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        gutterBottom
+                        style={{ marginTop: "0.5rem", fontWeight: "bold" }}
+                      >
+                        自己紹介
                     </Typography>
-                    {
-                      currentUser.profile ? (
-                        <Typography variant="body2" component="p" color="textSecondary">
-                          {currentUser.profile}
-                        </Typography>
-                      ) : (
-                        <Typography variant="body2" component="p" color="textSecondary">
-                          よろしくお願いいたします。
-                        </Typography>
-                      )
-                    }
-                    <Button
-                      variant="outlined"
-                      onClick={handleSignOut}
-                      color="primary"
-                      fullWidth
-                      startIcon={<ExitToAppIcon />}
-                      style={{ marginTop: "1rem" }}
-                    >
-                      サインアウト
+                      {
+                        currentUser.profile ? (
+                          <Typography variant="body2" component="p" color="textSecondary">
+                            {currentUser.profile}
+                          </Typography>
+                        ) : (
+                          <Typography variant="body2" component="p" color="textSecondary">
+                            よろしくお願いいたします。
+                          </Typography>
+                        )
+                      }
+                      <Button
+                        variant="outlined"
+                        onClick={handleSignOut}
+                        color="primary"
+                        fullWidth
+                        startIcon={<ExitToAppIcon />}
+                        style={{ marginTop: "1rem" }}
+                      >
+                        サインアウト
                     </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
-            <form noValidate autoComplete="off">
-              <Dialog
-                open={editFormOpen}
-                keepMounted
-                onClose={() => setEditFormOpen(false)}
-              >
-                <DialogTitle style={{ textAlign: "center" }}>
-                  プロフィールの変更
+                </CardContent>
+              </Card>
+              <form noValidate autoComplete="off">
+                <Dialog
+                  open={editFormOpen}
+                  keepMounted
+                  onClose={() => setEditFormOpen(false)}
+                >
+                  <DialogTitle style={{ textAlign: "center" }}>
+                    プロフィールの変更
                 </DialogTitle>
-                <DialogContent>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    label="名前"
-                    value={name}
-                    margin="dense"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-                  />
-                  <TextField
-                    placeholder="1000文字以内で書いてください。"
-                    variant="outlined"
-                    multiline
-                    fullWidth
-                    label="自己紹介"
-                    rows="8"
-                    value={profile}
-                    margin="dense"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setProfile(e.target.value)
-                    }}
-                  />
-                  <div className={classes.imageUploadBtn}>
-                    <input
-                      accept="image/*"
-                      className={classes.input}
-                      id="icon-button-file"
-                      type="file"
+                  <DialogContent>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      label="名前"
+                      value={name}
+                      margin="dense"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                    />
+                    <TextField
+                      placeholder="1000文字以内で書いてください。"
+                      variant="outlined"
+                      multiline
+                      fullWidth
+                      label="自己紹介"
+                      rows="8"
+                      value={profile}
+                      margin="dense"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        uploadImage(e)
-                        previewImage(e)
+                        setProfile(e.target.value)
                       }}
                     />
-                    <label htmlFor="icon-button-file">
-                      <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                      >
-                        <PhotoCamera />
-                      </IconButton>
-                    </label>
-                  </div>
-                  {
-                    preview ? (
-                      <Box
-                        className={classes.box}
-                      >
+                    <div className={classes.imageUploadBtn}>
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="icon-button-file"
+                        type="file"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                          uploadImage(e)
+                          previewImage(e)
+                        }}
+                      />
+                      <label htmlFor="icon-button-file">
                         <IconButton
-                          color="inherit"
-                          onClick={() => setPreview("")}
+                          color="primary"
+                          aria-label="upload picture"
+                          component="span"
                         >
-                          <CancelIcon />
+                          <PhotoCamera />
                         </IconButton>
-                        <img
-                          src={preview}
-                          alt="preview img"
-                          className={classes.preview}
-                        />
-                      </Box>
-                    ) : null
-                  }
-                </DialogContent>
-                <DialogActions>
-                  <Button
-                    onClick={handleSubmit}
-                    color="primary"
-                    disabled={!name || !profile ? true : false}
-                  >
-                    送信
+                      </label>
+                    </div>
+                    {
+                      preview ? (
+                        <Box
+                          className={classes.box}
+                        >
+                          <IconButton
+                            color="inherit"
+                            onClick={() => setPreview("")}
+                          >
+                            <CancelIcon />
+                          </IconButton>
+                          <img
+                            src={preview}
+                            alt="preview img"
+                            className={classes.preview}
+                          />
+                        </Box>
+                      ) : null
+                    }
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      onClick={handleSubmit}
+                      color="primary"
+                      disabled={!name || !profile ? true : false}
+                    >
+                      送信
                   </Button>
-                </DialogActions>
-              </Dialog>
-            </form>
+                  </DialogActions>
+                </Dialog>
+              </form>
+            </motion.div>
           </>
         ) : (
           <></>

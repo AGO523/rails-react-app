@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion";
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
@@ -153,34 +154,40 @@ const Users: React.FC = () => {
       {
         !loading ? (
           users?.length > 0 ? (
-            <Grid container justifyContent="center">
-              {
-                users?.map((user: User, index: number) => {
-                  return (
-                    <div key={index} onClick={() => {
-                      setUser(user)
-                      setUserDetailOpen(true)
-                    }}>
-                      <Grid item style={{ margin: "0.5rem", cursor: "pointer" }}>
-                        <Avatar
-                          alt="avatar"
-                          src={user?.image.url}
-                          className={classes.avatar}
-                        />
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          gutterBottom
-                          style={{ marginTop: "0.5rem", textAlign: "center" }}
-                        >
-                          {user.name}
-                        </Typography>
-                      </Grid>
-                    </div>
-                  )
-                })
-              }
-            </Grid>
+            <motion.div
+              animate={{ x: 0 }}
+              initial={{ x: 800 }}
+              exit={{ x: -800 }}
+              transition={{ duration: 0.6 }}>
+              <Grid container justifyContent="center">
+                {
+                  users?.map((user: User, index: number) => {
+                    return (
+                      <div key={index} onClick={() => {
+                        setUser(user)
+                        setUserDetailOpen(true)
+                      }}>
+                        <Grid item style={{ margin: "0.5rem", cursor: "pointer" }}>
+                          <Avatar
+                            alt="avatar"
+                            src={user?.image.url}
+                            className={classes.avatar}
+                          />
+                          <Typography
+                            variant="body2"
+                            component="p"
+                            gutterBottom
+                            style={{ marginTop: "0.5rem", textAlign: "center" }}
+                          >
+                            {user.name}
+                          </Typography>
+                        </Grid>
+                      </div>
+                    )
+                  })
+                }
+              </Grid>
+            </motion.div>
           ) : (
             <Typography
               component="p"

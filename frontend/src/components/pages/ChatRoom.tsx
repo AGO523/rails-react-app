@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react"
 import { RouteComponentProps } from "react-router-dom"
+import { motion } from "framer-motion";
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
@@ -119,75 +120,81 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
     <>
       {
         !loading ? (
-          <div style={{ maxWidth: 360 }}>
-            <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
-              <Grid item>
-                <Avatar
-                  alt="avatar"
-                  src={otherUser?.image.url || ""}
-                  className={classes.avatar}
-                />
-                <Typography
-                  variant="body2"
-                  component="p"
-                  gutterBottom
-                  style={{ marginTop: "0.5rem", marginBottom: "1rem", textAlign: "center" }}
-                >
-                  {otherUser?.name}
-                </Typography>
+          <motion.div
+            animate={{ x: 0 }}
+            initial={{ x: 800 }}
+            exit={{ x: -800 }}
+            transition={{ duration: 0.6 }}>
+            <div style={{ maxWidth: 360 }}>
+              <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
+                <Grid item>
+                  <Avatar
+                    alt="avatar"
+                    src={otherUser?.image.url || ""}
+                    className={classes.avatar}
+                  />
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    gutterBottom
+                    style={{ marginTop: "0.5rem", marginBottom: "1rem", textAlign: "center" }}
+                  >
+                    {otherUser?.name}
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            {
-              messages.map((message: MessageData, index: number) => {
-                return (
-                  <Grid key={index} container justifyContent={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
-                    <Grid item>
-                      <Box
-                        borderRadius={message.userId === otherUser?.id ? "30px 30px 30px 0px" : "30px 30px 0px 30px"}
-                        bgcolor={message.userId === otherUser?.id ? "#d3d3d3" : "#ffb6c1"}
-                        color={message.userId === otherUser?.id ? "#000000" : "#ffffff"}
-                        m={1}
-                        border={0}
-                        style={{ padding: "1rem" }}
-                      >
-                        <Typography variant="body1" component="p">
-                          {message.content}
+              {
+                messages.map((message: MessageData, index: number) => {
+                  return (
+                    <Grid key={index} container justifyContent={message.userId === otherUser?.id ? "flex-start" : "flex-end"}>
+                      <Grid item>
+                        <Box
+                          borderRadius={message.userId === otherUser?.id ? "30px 30px 30px 0px" : "30px 30px 0px 30px"}
+                          bgcolor={message.userId === otherUser?.id ? "#d3d3d3" : "#ffb6c1"}
+                          color={message.userId === otherUser?.id ? "#000000" : "#ffffff"}
+                          m={1}
+                          border={0}
+                          style={{ padding: "1rem" }}
+                        >
+                          <Typography variant="body1" component="p">
+                            {message.content}
+                          </Typography>
+                        </Box>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          color="textSecondary"
+                          style={{ textAlign: message.userId === otherUser?.id ? "left" : "right" }}
+                        >
+                          {iso8601ToDateTime(message.createdAt?.toString() || "100000000")}
                         </Typography>
-                      </Box>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        color="textSecondary"
-                        style={{ textAlign: message.userId === otherUser?.id ? "left" : "right" }}
-                      >
-                        {iso8601ToDateTime(message.createdAt?.toString() || "100000000")}
-                      </Typography>
+                      </Grid>
                     </Grid>
-                  </Grid>
-                )
-              })
-            }
-            <Grid container justifyContent="center" style={{ marginTop: "2rem" }}>
-              <form className={classes.formWrapper} noValidate autoComplete="off">
-                <TextField
-                  required
-                  multiline
-                  value={content}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setContent(e.target.value)}
-                  className={classes.textInputWrapper}
-                />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  disabled={!content ? true : false}
-                  onClick={handleSubmit}
-                  className={classes.button}
-                >
-                  <SendIcon />
-                </Button>
-              </form>
-            </Grid>
-          </div>
+                  )
+                })
+              }
+              <Grid container justifyContent="center" style={{ marginTop: "2rem" }}>
+                <form className={classes.formWrapper} noValidate autoComplete="off">
+                  <TextField
+                    required
+                    multiline
+                    value={content}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setContent(e.target.value)}
+                    className={classes.textInputWrapper}
+                  />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disabled={!content ? true : false}
+                    onClick={handleSubmit}
+                    className={classes.button}
+                  >
+                    <SendIcon />
+                  </Button>
+                </form>
+              </Grid>
+            </div>
+          </motion.div>
         ) : (
           <></>
         )

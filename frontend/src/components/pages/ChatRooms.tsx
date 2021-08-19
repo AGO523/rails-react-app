@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion";
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
@@ -60,38 +61,44 @@ const ChatRooms: React.FC = () => {
           chatRooms.length > 0 ? (
             chatRooms.map((chatRoom: ChatRoom, index: number) => {
               return (
-                <Grid container key={index} justifyContent="center">
-                  <List>
-                    {/* 個別のチャットルームへ飛ばす */}
-                    <Link to={`/chatroom/${chatRoom.chatRoom.id}`} className={classes.link}>
-                      <div className={classes.root}>
-                        <ListItem alignItems="flex-start" style={{ padding: 0 }}>
-                          <ListItemAvatar>
-                            <Avatar
-                              alt="avatar"
-                              src={chatRoom.otherUser.image.url}
+                <motion.div
+                  animate={{ x: 0 }}
+                  initial={{ x: 800 }}
+                  exit={{ x: -800 }}
+                  transition={{ duration: 0.6 }}>
+                  <Grid container key={index} justifyContent="center">
+                    <List>
+                      {/* 個別のチャットルームへ飛ばす */}
+                      <Link to={`/chatroom/${chatRoom.chatRoom.id}`} className={classes.link}>
+                        <div className={classes.root}>
+                          <ListItem alignItems="flex-start" style={{ padding: 0 }}>
+                            <ListItemAvatar>
+                              <Avatar
+                                alt="avatar"
+                                src={chatRoom.otherUser.image.url}
+                              />
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={chatRoom.otherUser.name}
+                              secondary={
+                                <div style={{ marginTop: "0.5rem" }}>
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    color="textSecondary"
+                                  >
+                                    {chatRoom.lastMessage === null ? "まだメッセージはありません。" : chatRoom.lastMessage.content.length > 30 ? chatRoom.lastMessage.content.substr(0, 30) + "..." : chatRoom.lastMessage.content}
+                                  </Typography>
+                                </div>
+                              }
                             />
-                          </ListItemAvatar>
-                          <ListItemText
-                            primary={chatRoom.otherUser.name}
-                            secondary={
-                              <div style={{ marginTop: "0.5rem" }}>
-                                <Typography
-                                  component="span"
-                                  variant="body2"
-                                  color="textSecondary"
-                                >
-                                  {chatRoom.lastMessage === null ? "まだメッセージはありません。" : chatRoom.lastMessage.content.length > 30 ? chatRoom.lastMessage.content.substr(0, 30) + "..." : chatRoom.lastMessage.content}
-                                </Typography>
-                              </div>
-                            }
-                          />
-                        </ListItem>
-                      </div>
-                    </Link>
-                    <Divider component="li" />
-                  </List>
-                </Grid>
+                          </ListItem>
+                        </div>
+                      </Link>
+                      <Divider component="li" />
+                    </List>
+                  </Grid>
+                </motion.div>
               )
             })
           ) : (
