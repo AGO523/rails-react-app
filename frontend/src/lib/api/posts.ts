@@ -1,4 +1,5 @@
 import { AxiosPromise } from "axios"
+import Cookies from "js-cookie"
 
 import client from "./client"
 import { PostApiJson } from "../../interfaces/index"
@@ -10,7 +11,14 @@ export const getPosts = (): AxiosPromise<PostApiJson> => {
 
 // post作成
 export const createPost = (data: FormData): AxiosPromise => {
-  return client.post("/posts", data)
+  return client.post("/posts", data, {
+      headers: {
+        "access-token": Cookies.get("_access_token"),
+        "client": Cookies.get("_client"),
+        "uid": Cookies.get("_uid")
+      }
+    }
+  )
 }
 
 // post削除
