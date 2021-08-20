@@ -21,7 +21,7 @@ export interface LikeData {
   toUserId: number | undefined | null
 }
 
-export interface GuestSignUpData {
+export interface GuestSignInData {
   name: string
   email: string
   password: string
@@ -37,8 +37,8 @@ export interface SignInFormData extends FormData {
   append(name: keyof SignInData, value: String | Blob, fileName?: string): any
 }
 
-export interface GuestSignUpFormData extends FormData {
-  append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
+export interface GuestSignInFormData extends FormData {
+  append(name: keyof GuestSignInData, value: String | Blob, fileName?: string): any
 }
 
 export interface LikeFormData extends FormData {

@@ -37,7 +37,7 @@ const App: React.FC = () => {
       const res = await getCurrentUser()
       console.log(res)
 
-      if (res?.status === 200) {
+      if (res?.data.status === 200) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.currentUser)
       } else {

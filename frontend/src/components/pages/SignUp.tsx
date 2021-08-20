@@ -23,9 +23,9 @@ import CancelIcon from "@material-ui/icons/Cancel"
 import { AuthContext } from "App"
 import AlertMessage from "components/utils/AlertMessage"
 import { signUp } from "lib/api/auth"
-import { guestSignUp } from "lib/api/auth"
+import { guestSignIn } from "lib/api/auth"
 import { SignUpFormData } from "interfaces/index"
-import { GuestSignUpFormData } from "interfaces/index"
+import { GuestSignInFormData } from "interfaces/index"
 
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -107,15 +107,14 @@ const SignUp: React.FC = () => {
   }
 
   // フォームデータを作成(ゲストサインアップ)
-  const createGuestSignUpFormData = (): GuestSignUpFormData => {
+  const createGuestSignInFormData = (): GuestSignInFormData => {
     const formData = new FormData()
 
-    formData.append("name", name)
-    formData.append("email", email)
-    formData.append("password", password)
-    formData.append("passwordConfirmation", passwordConfirmation)
-    formData.append("birthday", String(birthday))
-    formData.append("image", image)
+    formData.append("name", 'ゲストユーザー')
+    formData.append("email", 'guest@example.com')
+    formData.append("password", 'password')
+    formData.append("passwordConfirmation", 'password')
+    formData.append("birthday", '2021/01/01')
 
     return formData
   }
@@ -156,14 +155,14 @@ const SignUp: React.FC = () => {
     }
   }
 
-  // ゲストサインアップの関数
-  const handleSubmitGuestSignUp = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  // ゲストサインインの関数
+  const handleSubmitGuestSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const data = createGuestSignUpFormData()
+    const data = createGuestSignInFormData()
 
     try {
-      const res = await guestSignUp(data)
+      const res = await guestSignIn(data)
       console.log(res)
 
       if (res.status === 200) {
@@ -315,7 +314,7 @@ const SignUp: React.FC = () => {
                 variant="outlined"
                 color="primary"
                 className={classes.submitBtn}
-                onClick={handleSubmitGuestSignUp}
+                onClick={handleSubmitGuestSignIn}
               >
                 ゲストログイン
               </Button>

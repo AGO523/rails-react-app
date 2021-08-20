@@ -1,15 +1,15 @@
 import client from "lib/api/client"
 import Cookies from "js-cookie"
 
-import { SignUpFormData, SignInFormData, GuestSignUpFormData } from "interfaces/index"
+import { SignUpFormData, SignInFormData, GuestSignInFormData } from "interfaces/index"
 
 // サインアップ
 export const signUp = (data: SignUpFormData) => {
   return client.post("auth", data)
 }
 
-// ゲストサインアップ
-export const guestSignUp = (data: GuestSignUpFormData) => {
+// ゲストサインイン
+export const guestSignIn = (data: GuestSignInFormData) => {
   return client.post("auth", data)
 }
 
