@@ -100,6 +100,7 @@ const Header: React.FC = () => {
 
   return (
     <>
+
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Typography

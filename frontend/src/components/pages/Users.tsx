@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion";
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
@@ -15,7 +16,6 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import { LikeFormData } from "interfaces/index"
 import AlertMessage from "components/utils/AlertMessage"
 
-import { prefectures } from "data/prefectures"
 import { getUsers } from "lib/api/users"
 import { getLikes, createLike } from "lib/api/likes"
 import { User, LikeData } from "interfaces/index"
@@ -43,10 +43,8 @@ const Users: React.FC = () => {
     image: {
       url: ""
     },
-    gender: 0,
     birthday: "",
     profile: "",
-    prefecture: 13,
     allowPasswordChange: true
   }
 
@@ -69,20 +67,16 @@ const Users: React.FC = () => {
     return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
   }
 
-  // 都道府県
-  const userPrefecture = (): string => {
-    return prefectures[(user.prefecture) - 1]
-  }
 
-    // フォームデータを作成
-    const createFormData = (): LikeFormData => {
-      const formData = new FormData()
-  
-      formData.append("fromUserId", String(currentUser?.id))
-      formData.append("toUserId", String(user.id))
-  
-      return formData
-    }
+  // フォームデータを作成
+  const createFormData = (): LikeFormData => {
+    const formData = new FormData()
+
+    formData.append("fromUserId", String(currentUser?.id))
+    formData.append("toUserId", String(user.id))
+
+    return formData
+  }
 
   // いいね作成
   const handleCreateLike = async (user: User) => {
@@ -160,34 +154,40 @@ const Users: React.FC = () => {
       {
         !loading ? (
           users?.length > 0 ? (
-            <Grid container justifyContent="center">
-              {
-                users?.map((user: User, index: number) => {
-                  return (
-                    <div key={index} onClick={() => {
-                      setUser(user)
-                      setUserDetailOpen(true)
-                    }}>
-                      <Grid item style={{ margin: "0.5rem", cursor: "pointer" }}>
-                        <Avatar
-                          alt="avatar"
-                          src={user?.image.url}
-                          className={classes.avatar}
-                        />
-                        <Typography
-                          variant="body2"
-                          component="p"
-                          gutterBottom
-                          style={{ marginTop: "0.5rem", textAlign: "center" }}
-                        >
-                          {user.name}
-                        </Typography>
-                      </Grid>
-                    </div>
-                  )
-                })
-              }
-            </Grid>
+            <motion.div
+              animate={{ x: 0 }}
+              initial={{ x: 800 }}
+              exit={{ x: -800 }}
+              transition={{ duration: 0.6 }}>
+              <Grid container justifyContent="center">
+                {
+                  users?.map((user: User, index: number) => {
+                    return (
+                      <div key={index} onClick={() => {
+                        setUser(user)
+                        setUserDetailOpen(true)
+                      }}>
+                        <Grid item style={{ margin: "0.5rem", cursor: "pointer" }}>
+                          <Avatar
+                            alt="avatar"
+                            src={user?.image.url}
+                            className={classes.avatar}
+                          />
+                          <Typography
+                            variant="body2"
+                            component="p"
+                            gutterBottom
+                            style={{ marginTop: "0.5rem", textAlign: "center" }}
+                          >
+                            {user.name}
+                          </Typography>
+                        </Grid>
+                      </div>
+                    )
+                  })
+                }
+              </Grid>
+            </motion.div>
           ) : (
             <Typography
               component="p"
@@ -219,7 +219,7 @@ const Users: React.FC = () => {
           <Grid container justifyContent="center">
             <Grid item style={{ marginTop: "1rem" }}>
               <Typography variant="body1" component="p" gutterBottom style={{ textAlign: "center" }}>
-                {user.name} {userAge()}歳 ({userPrefecture()})
+                {user.name} {userAge()}歳
               </Typography>
               <Divider />
               <Typography

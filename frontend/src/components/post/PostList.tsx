@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion";
 
 import { Container, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
@@ -30,26 +31,32 @@ const PostList: React.FC = () => {
   }, [])
 
   return (
-    <Container maxWidth="lg" className={classes.container}>
-      <Grid container direction="row" justifyContent="center">
-        <Grid item>
-          <OutlinedCard />
-          <PostForm
-            handleGetPosts={handleGetPosts}
-          />
-          {posts?.map((post: Post) => {
-            return (
-              <PostItem
-                key={post.id}
-                post={post}
-                handleGetPosts={handleGetPosts}
-              />
-            )
-          }
-          )}
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: 800 }}
+      exit={{ x: -800 }}
+      transition={{ duration: 0.6 }}>
+      <Container maxWidth="lg" className={classes.container}>
+        <Grid container direction="row" justifyContent="center">
+          <Grid item>
+            <OutlinedCard />
+            <PostForm
+              handleGetPosts={handleGetPosts}
+            />
+            {posts?.map((post: Post) => {
+              return (
+                <PostItem
+                  key={post.id}
+                  post={post}
+                  handleGetPosts={handleGetPosts}
+                />
+              )
+            }
+            )}
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </motion.div>
   )
 }
 

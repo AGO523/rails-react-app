@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react"
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from "react-router-dom"
+import { AnimatePresence, motion } from "framer-motion";
 
 import CommonLayout from "components/layouts/CommonLayout"
 import Home from "components/pages/Home"
@@ -69,26 +70,33 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <AuthContext.Provider value={{ loading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
-        <CommonLayout>
-          <Switch>
-            <Route exact path="/" component={Root} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/signin" component={SignIn} />
-            <Private>
-              <Switch>
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/users" component={Users} />
-                <Route exact path="/studies" component={Studies} />
-                <Route exact path="/chat_rooms" component={ChatRooms} />
-                <Route path="/chatroom/:id" component={ChatRoom} />
-                <Route exact path="/posts" component={PostList} />
-                <Route component={NotFound} />
-              </Switch>
-            </Private>
-          </Switch>
-        </CommonLayout>
-      </AuthContext.Provider>
+      <Route render={({ location }) => (
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <AuthContext.Provider value={{ loading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
+            <CommonLayout>
+              <motion.div>
+                <Switch location={location} key={location.pathname}>
+                  <Route exact path="/" component={Root} />
+                  <Route exact path="/signup" component={SignUp} />
+                  <Route exact path="/signin" component={SignIn} />
+                  <Private>
+                    <Switch>
+                      <Route exact path="/home" component={Home} />
+                      <Route exact path="/users" component={Users} />
+                      <Route exact path="/studies" component={Studies} />
+                      <Route exact path="/chat_rooms" component={ChatRooms} />
+                      <Route path="/chatroom/:id" component={ChatRoom} />
+                      <Route exact path="/posts" component={PostList} />
+                      <Route component={NotFound} />
+                    </Switch>
+                  </Private>
+                </Switch>
+              </motion.div>
+            </CommonLayout>
+          </AuthContext.Provider>
+        </AnimatePresence>
+      )}
+      />
     </Router>
   )
 }

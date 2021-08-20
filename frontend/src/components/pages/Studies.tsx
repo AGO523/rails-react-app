@@ -15,7 +15,6 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import { LikeFormData } from "interfaces/index"
 import AlertMessage from "components/utils/AlertMessage"
 
-import { prefectures } from "data/prefectures"
 import { getUsers } from "lib/api/users"
 import { getLikes, createLike } from "lib/api/likes"
 import { User, LikeData } from "interfaces/index"
@@ -43,10 +42,8 @@ const Studies: React.FC = () => {
     image: {
       url: ""
     },
-    gender: 0,
     birthday: "",
     profile: "",
-    prefecture: 13,
     allowPasswordChange: true
   }
 
@@ -69,10 +66,6 @@ const Studies: React.FC = () => {
     return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
   }
 
-  // 都道府県
-  const userPrefecture = (): string => {
-    return prefectures[(user.prefecture) - 1]
-  }
 
   // フォームデータを作成
   const createFormData = (): LikeFormData => {
@@ -86,7 +79,7 @@ const Studies: React.FC = () => {
 
   // いいね作成
   const handleCreateLike = async (user: User) => {
-    
+
     const data = createFormData()
 
     try {
@@ -219,7 +212,7 @@ const Studies: React.FC = () => {
           <Grid container justifyContent="center">
             <Grid item style={{ marginTop: "1rem" }}>
               <Typography variant="body1" component="p" gutterBottom style={{ textAlign: "center" }}>
-                {user.name} {userAge()}歳 ({userPrefecture()})
+                {user.name} {userAge()}歳
               </Typography>
               <Divider />
               <Typography

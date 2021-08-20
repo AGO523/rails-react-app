@@ -4,8 +4,6 @@ export interface SignUpData {
   email: string
   password: string
   passwordConfirmation: string
-  gender: number
-  prefecture: number
   birthday: Date
   image: string
 }
@@ -28,8 +26,6 @@ export interface GuestSignUpData {
   email: string
   password: string
   passwordConfirmation: string
-  gender: number
-  prefecture: number
   birthday: Date
 }
 
@@ -59,10 +55,8 @@ export interface User {
   image: {
     url: string
   }
-  gender: number
   birthday: String | number | Date
   profile: string
-  prefecture: number
   allowPasswordChange: boolean
   createdAt?: Date
   updatedAt?: Date
@@ -71,7 +65,6 @@ export interface User {
 export interface UpdateUserData {
   id: number | undefined | null
   name?: string
-  prefecture?: number
   profile?: string
   image?: string
 }
@@ -104,7 +97,9 @@ export interface MessageData {
 
 // 投稿機能
 export interface Post {
+  user_id: any
   id: string
+  otherUser: User
   content: string
   image?: {
     url: string

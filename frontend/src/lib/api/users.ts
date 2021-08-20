@@ -3,7 +3,7 @@ import { UpdateUserFormData } from "interfaces/index"
 
 import Cookies from "js-cookie"
 
-// 都道府県が同じで性別の異なるユーザー情報一覧を取得（自分以外）
+// ユーザー情報一覧を取得（自分以外）
 export const getUsers = () => {
   return client.get("users", {
     headers: {
