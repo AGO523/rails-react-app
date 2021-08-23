@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react"
-import { BrowserRouter as Router, Switch, Route, Redirect, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import { AnimatePresence, motion } from "framer-motion";
 
 import CommonLayout from "components/layouts/CommonLayout"

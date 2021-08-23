@@ -35,7 +35,7 @@ const PostList: React.FC = () => {
       animate={{ x: 0 }}
       initial={{ x: 800 }}
       exit={{ x: -800 }}
-      transition={{ duration: 0.6 }}>
+      transition={{ duration: 0.4 }}>
       <Container maxWidth="lg" className={classes.container}>
         <Grid container direction="row" justifyContent="center">
           <Grid item>

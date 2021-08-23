@@ -124,7 +124,7 @@ const ChatRoom: React.FC<ChatRoomProps> = (props) => {
             animate={{ x: 0 }}
             initial={{ x: 800 }}
             exit={{ x: -800 }}
-            transition={{ duration: 0.6 }}>
+            transition={{ duration: 0.4 }}>
             <div style={{ maxWidth: 360 }}>
               <Grid container justifyContent="center" style={{ marginBottom: "1rem" }}>
                 <Grid item>

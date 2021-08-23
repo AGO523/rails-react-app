@@ -158,7 +158,7 @@ const Users: React.FC = () => {
               animate={{ x: 0 }}
               initial={{ x: 800 }}
               exit={{ x: -800 }}
-              transition={{ duration: 0.6 }}>
+              transition={{ duration: 0.4 }}>
               <Grid container justifyContent="center">
                 {
                   users?.map((user: User, index: number) => {

@@ -33,7 +33,7 @@ export const Root = () => {
       animate={{ x: 0 }}
       initial={{ x: 800 }}
       exit={{ x: -800 }}
-      transition={{ duration: 0.6 }}>
+      transition={{ duration: 0.4 }}>
       <div className="App">
         <MainImage />
         <div className="card">

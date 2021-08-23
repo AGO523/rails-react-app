@@ -48,6 +48,7 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <SearchIcon />
+              先生を探す
             </IconButton>
             <IconButton
               component={Link}
@@ -57,6 +58,7 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <BorderColorIcon />
+              ポスト
             </IconButton>
             <IconButton
               component={Link}
@@ -66,6 +68,7 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <ChatBubbleIcon />
+              チャット
             </IconButton>
             <IconButton
               component={Link}
@@ -75,6 +78,7 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <PersonIcon />
+              ホーム
             </IconButton>
           </>
         )
@@ -106,7 +110,7 @@ const Header: React.FC = () => {
           <Typography
             component={Link}
             to="/"
-            variant="h6"
+            variant="h5"
             className={classes.title}
           >
             TeamTeaching
