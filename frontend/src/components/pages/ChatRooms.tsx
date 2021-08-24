@@ -76,11 +76,11 @@ const ChatRooms: React.FC = () => {
                             <ListItemAvatar>
                               <Avatar
                                 alt="avatar"
-                                src={chatRoom.otherUser.image.url}
+                                src={chatRoom.otherUser?.image.url || ""}
                               />
                             </ListItemAvatar>
                             <ListItemText
-                              primary={chatRoom.otherUser.name}
+                              primary={chatRoom.otherUser?.name}
                               secondary={
                                 <div style={{ marginTop: "0.5rem" }}>
                                   <Typography
