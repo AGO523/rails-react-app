@@ -97,7 +97,7 @@ export interface MessageData {
 
 // 投稿機能
 export interface Post {
-  user_id: any
+  userId: any
   id: string
   otherUser: User
   content: string

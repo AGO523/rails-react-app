@@ -65,7 +65,8 @@ const ChatRooms: React.FC = () => {
                   animate={{ x: 0 }}
                   initial={{ x: 800 }}
                   exit={{ x: -800 }}
-                  transition={{ duration: 0.4 }}>
+                  transition={{ duration: 0.4 }}
+                >
                   <Grid container key={index} justifyContent="center">
                     <List>
                       {/* 個別のチャットルームへ飛ばす */}
