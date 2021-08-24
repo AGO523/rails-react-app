@@ -65,7 +65,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={post.userId}　//元はユーザーネーム
+          title={post.userId}　//user_nameが表示されるよう修正する
         />
         {post.image?.url ?
           <CardMedia
