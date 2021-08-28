@@ -99,7 +99,7 @@ export interface MessageData {
 export interface Post {
   userId: any
   id: string
-  user_name: User
+  user: User
   content: string
   image?: {
     url: string

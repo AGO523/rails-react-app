@@ -65,7 +65,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               <MoreVertIcon />
             </IconButton>
           }
-          primary={post.user_name}　//user_nameが表示されるよう修正する
+          title={post.user?.name}　//user_nameが表示されるよう修正する
         />
         {post.image?.url ?
           <CardMedia
@@ -76,7 +76,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
         }
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="span">
-            {post.content.split("\n").map((content: string, index: number) => {
+            {post.content?.split("\n").map((content: string, index: number) => {
               return (
                 <p key={index}>{content}</p>
               )
