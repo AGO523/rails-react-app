@@ -4,12 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../images/main-image.jpeg");
+  background-image: url("../../images/main-image02.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .title {
   font-size: 2.4em;
-  color: #fff;
+  color: rgb(255, 193, 79);
 }
