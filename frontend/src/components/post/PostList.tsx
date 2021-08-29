@@ -23,6 +23,7 @@ const PostList: React.FC = () => {
 
   const handleGetPosts = async () => {
     const { data } = await getPosts()
+
     setPosts(data.posts)
   }
 

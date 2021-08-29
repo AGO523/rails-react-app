@@ -104,6 +104,7 @@ export interface Post {
   image?: {
     url: string
   }
+  name: string
 }
 
 export interface PostApiJson {
