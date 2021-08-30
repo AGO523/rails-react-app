@@ -11,5 +11,11 @@
 
 .title {
   font-size: 2.4em;
-  color: rgb(255, 193, 79);
+  color: rgb(6, 145, 17);
+}
+
+.span {
+  font-size: 30px;
+  color: rgb(6, 145, 17);
+  display: block;
 }

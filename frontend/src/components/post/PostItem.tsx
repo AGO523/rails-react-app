@@ -17,6 +17,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert"
 
 import { Post } from "../../interfaces/index"
 import { deletePost } from "../../lib/api/posts"
+// import userEvent from "@testing-library/user-event"
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -65,7 +66,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={post.name}　//user_nameが表示されるよう修正する
+          title={post.name}
         />
         {post.image?.url ?
           <CardMedia
