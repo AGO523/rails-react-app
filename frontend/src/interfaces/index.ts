@@ -4,7 +4,6 @@ export interface SignUpData {
   email: string
   password: string
   passwordConfirmation: string
-  birthday: Date
   image: string
 }
 
@@ -26,7 +25,6 @@ export interface GuestSignInData {
   email: string
   password: string
   passwordConfirmation: string
-  birthday: Date
 }
 
 export interface SignUpFormData extends FormData {
@@ -55,7 +53,6 @@ export interface User {
   image: {
     url: string
   }
-  birthday: String | number | Date
   profile: string
   allowPasswordChange: boolean
   createdAt?: Date

@@ -73,9 +73,6 @@ const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
-  const [birthday, setBirthday] = useState<Date | null>(
-    new Date("2000-01-01T00:00:00"),
-  )
   const [image, setImage] = useState<string>("")
   const [preview, setPreview] = useState<string>("")
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
@@ -100,7 +97,6 @@ const SignUp: React.FC = () => {
     formData.append("email", email)
     formData.append("password", password)
     formData.append("passwordConfirmation", passwordConfirmation)
-    formData.append("birthday", String(birthday))
     formData.append("image", image)
 
     return formData
@@ -114,7 +110,6 @@ const SignUp: React.FC = () => {
     formData.append("email", 'guest@example.com')
     formData.append("password", 'password')
     formData.append("passwordConfirmation", 'password')
-    formData.append("birthday", '2021/01/01')
 
     return formData
   }
@@ -143,7 +138,6 @@ const SignUp: React.FC = () => {
         setEmail("")
         setPassword("")
         setPasswordConfirmation("")
-        setBirthday(null)
 
         console.log("Signed in successfully!")
       } else {
@@ -179,7 +173,6 @@ const SignUp: React.FC = () => {
         setEmail("")
         setPassword("")
         setPasswordConfirmation("")
-        setBirthday(null)
 
         console.log("Signed in successfully!")
       } else {
@@ -237,25 +230,6 @@ const SignUp: React.FC = () => {
               autoComplete="current-password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirmation(e.target.value)}
             />
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justifyContent="space-around">
-                <KeyboardDatePicker
-                  fullWidth
-                  inputVariant="outlined"
-                  margin="dense"
-                  id="date-picker-dialog"
-                  label="誕生日"
-                  format="MM/dd/yyyy"
-                  value={birthday}
-                  onChange={(date: Date | null) => {
-                    setBirthday(date)
-                  }}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                />
-              </Grid>
-            </MuiPickersUtilsProvider>
             <div className={classes.imageUploadBtn}>
               <input
                 accept="image/*"

@@ -50,7 +50,6 @@ const UserPages: React.FC<UserPagesProps> = (props) => {
     image: {
       url: ""
     },
-    birthday: "",
     profile: "",
     allowPasswordChange: true
   }

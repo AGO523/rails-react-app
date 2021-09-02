@@ -79,16 +79,9 @@ const Home: React.FC = () => {
     setPreview(window.URL.createObjectURL(file))
   }, [])
 
-  // 生年月日から年齢を計算する 年齢 = floor((今日 - 誕生日) / 10000)
-  const currentUserAge = (): number | void => {
-    const birthday = currentUser?.birthday.toString().replace(/-/g, "") || ""
-    if (birthday.length !== 8) return
 
-    const date = new Date()
-    const today = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2)
 
-    return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
-  }
+  const date = new Date()
 
 
   const createFormData = (): UpdateUserFormData => {
@@ -183,8 +176,8 @@ const Home: React.FC = () => {
                   <Grid container justifyContent="center">
                     <Grid item style={{ marginTop: "1.5rem" }}>
                       <Typography variant="body1" component="p" gutterBottom>
-                        {currentUser?.name} {currentUserAge()}歳
-                    </Typography>
+                        {currentUser?.name}
+                      </Typography>
                       <Divider style={{ marginTop: "0.5rem" }} />
                       <Typography
                         variant="body2"

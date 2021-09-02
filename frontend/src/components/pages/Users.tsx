@@ -43,7 +43,6 @@ const Users: React.FC = () => {
     image: {
       url: ""
     },
-    birthday: "",
     profile: "",
     allowPasswordChange: true
   }
@@ -56,17 +55,7 @@ const Users: React.FC = () => {
   const [likes, setLikes] = useState<LikeData[]>([])
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
-  // 生年月日から年齢を計算する 年齢 = floor((今日 - 誕生日) / 10000)
-  const userAge = (): number | void => {
-    const birthday = user.birthday.toString().replace(/-/g, "")
-    if (birthday.length !== 8) return
-
-    const date = new Date()
-    const today = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2)
-
-    return Math.floor((parseInt(today) - parseInt(birthday)) / 10000)
-  }
-
+  const date = new Date()
 
   // フォームデータを作成
   const createFormData = (): LikeFormData => {
@@ -219,7 +208,7 @@ const Users: React.FC = () => {
           <Grid container justifyContent="center">
             <Grid item style={{ marginTop: "1rem" }}>
               <Typography variant="body1" component="p" gutterBottom style={{ textAlign: "center" }}>
-                {user.name} {userAge()}歳
+                {user.name}
               </Typography>
               <Divider />
               <Typography
