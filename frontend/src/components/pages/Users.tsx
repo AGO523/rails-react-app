@@ -55,8 +55,6 @@ const Users: React.FC = () => {
   const [likes, setLikes] = useState<LikeData[]>([])
   const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
 
-  const date = new Date()
-
   // フォームデータを作成
   const createFormData = (): LikeFormData => {
     const formData = new FormData()

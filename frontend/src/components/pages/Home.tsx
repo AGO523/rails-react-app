@@ -79,11 +79,6 @@ const Home: React.FC = () => {
     setPreview(window.URL.createObjectURL(file))
   }, [])
 
-
-
-  const date = new Date()
-
-
   const createFormData = (): UpdateUserFormData => {
     const formData = new FormData()
 
