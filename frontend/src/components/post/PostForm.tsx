@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     display: "flex",
     flexWrap: "wrap",
-    width: 320
+    width: 480
   },
   inputFileBtn: {
     marginTop: "10px"
@@ -131,7 +131,7 @@ const PostForm = ({ handleGetPosts }: PostFormProps) => {
           </Button>
         </div>
       </form>
-      { preview ?
+      {preview ?
         <Box
           sx={{ ...borderStyles, borderRadius: 1, borderColor: "grey.400" }}
           className={classes.box}

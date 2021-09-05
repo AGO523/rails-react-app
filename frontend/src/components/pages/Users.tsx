@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
+import Card from "@material-ui/core/Card"
+import CardHeader from "@material-ui/core/CardHeader"
+import CardContent from "@material-ui/core/CardContent"
+
 
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -26,6 +30,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
     width: theme.spacing(10),
     height: theme.spacing(10)
+  },
+  card: {
+    width: 480,
+    marginTop: "2rem",
+    transition: "all 0.3s",
+    "&:hover": {
+      boxShadow:
+        "1px 0px 20px -1px rgba(0,0,0,0.2), 0px 0px 20px 5px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+      transform: "translateY(-3px)"
+    }
+  },
+  delete: {
+    marginLeft: "auto"
   }
 }))
 
@@ -146,34 +163,48 @@ const Users: React.FC = () => {
               initial={{ x: 800 }}
               exit={{ x: -800 }}
               transition={{ duration: 0.4 }}>
-              <Grid container justifyContent="center">
-                {
-                  users?.map((user: User, index: number) => {
-                    return (
-                      <div key={index} onClick={() => {
-                        setUser(user)
-                        setUserDetailOpen(true)
-                      }}>
-                        <Grid item style={{ margin: "0.5rem", cursor: "pointer" }}>
-                          <Avatar
-                            alt="avatar"
-                            src={user?.image.url}
-                            className={classes.avatar}
-                          />
-                          <Typography
+              {
+                users?.map((user: User, index: number) => {
+                  return (
+                    <div key={index} onClick={() => {
+                      setUser(user)
+                      setUserDetailOpen(true)
+                    }}>
+                      <Card className={classes.card}>
+                        <CardHeader
+                          avatar={
+                            <Avatar
+                              alt="avatar"
+                              src={user?.image.url}
+                              className={classes.avatar}
+                            />
+                          }
+                          titleTypographyProps={{ variant: 'h5' }}
+                          title={user.name}
+                        />
+                        {/* <Typography
                             variant="body2"
                             component="p"
                             gutterBottom
                             style={{ marginTop: "0.5rem", textAlign: "center" }}
                           >
                             {user.name}
+                          </Typography> */}
+                        <CardContent>
+                          <Typography
+                            variant="body1"
+                            component="p"
+                            gutterBottom
+                            style={{ textAlign: "start" }}
+                          >
+                            {user.profile}
                           </Typography>
-                        </Grid>
-                      </div>
-                    )
-                  })
-                }
-              </Grid>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  )
+                })
+              }
             </motion.div>
           ) : (
             <Typography
@@ -240,7 +271,7 @@ const Users: React.FC = () => {
                 variant="outlined"
                 color="secondary"
               > 学習をくわしく見る
-            </Button>
+              </Button>
             </Grid>
           </Grid>
         </DialogContent>

@@ -13,7 +13,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import ShareIcon from "@material-ui/icons/Share"
 import DeleteIcon from "@material-ui/icons/Delete"
-import MoreVertIcon from "@material-ui/icons/MoreVert"
+// import MoreVertIcon from "@material-ui/icons/MoreVert"
 
 import { Post } from "../../interfaces/index"
 import { deletePost } from "../../lib/api/posts"
@@ -21,7 +21,7 @@ import { deletePost } from "../../lib/api/posts"
 
 const useStyles = makeStyles(() => ({
   card: {
-    width: 320,
+    width: 480,
     marginTop: "2rem",
     transition: "all 0.3s",
     "&:hover": {
@@ -61,11 +61,11 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               U
             </Avatar>
           }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
+          // action={
+          //   // <IconButton>
+          //   //   {/* <MoreVertIcon /> */}
+          //   // </IconButton>
+          // }
           title={post.name}
         />
         {post.image?.url ?
