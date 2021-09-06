@@ -24,9 +24,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   linkBtn: {
     textTransform: "none",
     marginLeft: theme.spacing(1)
+
   },
   bar: {
-    backgroundColor: "#f48fb1"
+    backgroundColor: "#bebcbe"
   }
 }))
 
@@ -48,7 +49,7 @@ const Header: React.FC = () => {
               color="inherit"
             >
               <SearchIcon />
-              先生を探す
+              見つける
             </IconButton>
             <IconButton
               component={Link}

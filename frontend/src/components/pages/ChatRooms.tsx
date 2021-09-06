@@ -82,10 +82,10 @@ const ChatRooms: React.FC = () => {
                             <ListItemText
                               primary={chatRoom.otherUser?.name}
                               secondary={
-                                <div style={{ marginTop: "0.5rem" }}>
+                                <div style={{ marginTop: "1rem" }}>
                                   <Typography
                                     component="span"
-                                    variant="body2"
+                                    variant="body1"
                                     color="textSecondary"
                                   >
                                     {chatRoom.lastMessage === null ? "まだメッセージはありません。" : chatRoom.lastMessage.content.length > 30 ? chatRoom.lastMessage.content.substr(0, 30) + "..." : chatRoom.lastMessage.content}
