@@ -4,18 +4,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../images/main-image02.jpeg");
+  background-image: url("../../images/main-image.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .title {
   font-size: 2.4em;
-  color: rgb(6, 145, 17);
+  color: rgb(216, 248, 253);
 }
 
 .span {
   font-size: 30px;
-  color: rgb(6, 145, 17);
+  color: rgb(216, 248, 253);
   display: block;
 }
