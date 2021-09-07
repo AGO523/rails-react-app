@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     flexGrow: 1,
     textDecoration: "none",
-    color: "inherit"
+    color: "black"
   },
   linkBtn: {
     textTransform: "none",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
   },
   bar: {
-    backgroundColor: "#bebcbe"
+    backgroundColor: "#fff"
   }
 }))
 
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
               to="/users"
               edge="start"
               className={classes.linkBtn}
-              color="inherit"
+              color="primary"
             >
               <SearchIcon />
               見つける
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
               to="/posts"
               edge="start"
               className={classes.linkBtn}
-              color="inherit"
+              color="primary"
             >
               <BorderColorIcon />
               ポスト
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
               to="/chat_rooms"
               edge="start"
               className={classes.linkBtn}
-              color="inherit"
+              color="primary"
             >
               <ChatBubbleIcon />
               チャット
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
               to="/home"
               edge="start"
               className={classes.linkBtn}
-              color="inherit"
+              color="primary"
             >
               <PersonIcon />
               ホーム
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
               to="/signin"
               edge="start"
               className={classes.linkBtn}
-              color="inherit"
+              color="primary"
             >
               <ExitToAppIcon />
             </IconButton>
