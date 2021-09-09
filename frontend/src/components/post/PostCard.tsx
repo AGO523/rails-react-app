@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   mainTitle: {
-    color: "palevioletred",
+    color: "blue",
   }
 });
 
@@ -34,13 +34,13 @@ export default function OutlinedCard() {
         <Typography className={classes.mainTitle} variant="h5" component="h2">
           学習の広場
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body1" component="p">
           ・先生たちと一緒に学習する内容を知ることができます。
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body1" component="p">
           ・気になる先生のページに行って、その先生の詳しいことを知ることができます。
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body1" component="p">
           ・先生に学んだことを知らせることができます。
         </Typography>
       </CardContent>

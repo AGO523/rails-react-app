@@ -10,6 +10,7 @@ import Users from "components/pages/Users"
 import UserPages from "components/pages/UserPages"
 import SignUp from "components/pages/SignUp"
 import { Root } from "components/pages/Root"
+import { About } from "components/pages/About"
 import SignIn from "components/pages/SignIn"
 import NotFound from "components/pages/NotFound"
 import PostList from "./components/post/PostList"
@@ -77,6 +78,7 @@ const App: React.FC = () => {
               <motion.div>
                 <Switch location={location} key={location.pathname}>
                   <Route exact path="/" component={Root} />
+                  <Route exact path="/abouts" component={About} />
                   <Route exact path="/signup" component={SignUp} />
                   <Route exact path="/signin" component={SignIn} />
                   <Private>

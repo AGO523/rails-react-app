@@ -1,6 +1,11 @@
 import { ComponentProps } from 'react';
 import { motion } from "framer-motion";
-import Image01 from "../../images/main-image.jpeg"
+import 'App.css';
+import 'animate.css/animate.css'
+import data from "data.json"
+
+import MainImage from "components/MainImage/MainImage"
+import Card from "components/Card/Card"
 
 import { makeStyles, Theme } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
@@ -10,8 +15,6 @@ import {
 } from "react-router-dom"
 import { Typography } from "@material-ui/core"
 
-const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
 
 const useStyles = makeStyles((theme: Theme) => ({
   box: {
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export const Root = () => {
+export const About = () => {
   const classes = useStyles()
   // const history = useHistory()
   return (
@@ -32,28 +35,30 @@ export const Root = () => {
       exit={{ x: -800 }}
       transition={{ duration: 0.4 }}>
       <div className="App">
-        <img style={{ display: 'none' }} src={Image01} alt="increase priority" />
+        <MainImage />
+        <div className="card">
+          {data.map((item: ComponentProps<typeof Card>, index: number) => {
+            return (
+              <Card title={item.title} description={item.description} imagePath={item.imagePath} key={index} />
+            )
+          })}
+        </div>
         <div className="module--spacing--small"></div>
         <div>
+          <p>ユーザー登録をしてサービスを使う</p>
           <Box textAlign="center" className={classes.box}>
-            <Typography variant="h6" align="center" color="inherit" >
+            <Typography variant="body2">
+              まだアカウントをお持ちでない方は
               <Link to="/signup" className={classes.link}>
-                ユーザー登録
+                こちら
               </Link>
-              してサービスを使う
+              から作成してください。
             </Typography>
           </Box>
         </div>
-        <Box textAlign="center" className={classes.box}>
-          <Typography variant="h6">
-            <Link to="/abouts" className={classes.link}>
-              About
-            </Link>
-          </Typography>
-        </Box>
       </div>
     </motion.div>
   );
 }
 
-export default Root;
+export default About;
