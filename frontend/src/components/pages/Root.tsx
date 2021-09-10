@@ -8,19 +8,19 @@ import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion";
 
-import background from "../../images/top02-image.jpeg";
+import Background from "../../images/top02-image.jpeg";
 
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    backgroundImage: `url(${background})`,
+    backgroundImage: `url(${Background})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     padding: theme.spacing(20, 20, 40),
   },
   heroButtons: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(15),
   },
 }));
 
