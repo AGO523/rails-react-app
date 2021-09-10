@@ -18,7 +18,7 @@ import { ChatRoom } from "interfaces/index"
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    minWidth: 340,
+    minWidth: 480,
     maxWidth: "100%"
   },
   link: {

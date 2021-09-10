@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: theme.spacing(10)
   },
   card: {
-    width: 340
+    width: 480
   },
   imageUploadBtn: {
     textAlign: "right"
@@ -181,7 +181,7 @@ const Home: React.FC = () => {
                         style={{ marginTop: "0.5rem", fontWeight: "bold" }}
                       >
                         自己紹介
-                    </Typography>
+                      </Typography>
                       {
                         currentUser.profile ? (
                           <Typography variant="body2" component="p" color="textSecondary">
@@ -202,7 +202,7 @@ const Home: React.FC = () => {
                         style={{ marginTop: "1rem" }}
                       >
                         サインアウト
-                    </Button>
+                      </Button>
                     </Grid>
                   </Grid>
                 </CardContent>
@@ -215,7 +215,7 @@ const Home: React.FC = () => {
                 >
                   <DialogTitle style={{ textAlign: "center" }}>
                     プロフィールの変更
-                </DialogTitle>
+                  </DialogTitle>
                   <DialogContent>
                     <TextField
                       variant="outlined"
@@ -287,7 +287,7 @@ const Home: React.FC = () => {
                       disabled={!name || !profile ? true : false}
                     >
                       送信
-                  </Button>
+                    </Button>
                   </DialogActions>
                 </Dialog>
               </form>

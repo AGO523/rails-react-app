@@ -1,59 +1,80 @@
-import { ComponentProps } from 'react';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import { Link } from "react-router-dom"
 import { motion } from "framer-motion";
-import Image01 from "../../images/main-image.jpeg"
 
-import { makeStyles, Theme } from "@material-ui/core/styles"
-import Box from "@material-ui/core/Box"
-import {
-  // useHistory,
-  Link
-} from "react-router-dom"
-import { Typography } from "@material-ui/core"
+import background from "../../images/top-image.jpeg";
 
-const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  box: {
-    marginTop: "2rem"
+const useStyles = makeStyles((theme) => ({
+  heroContent: {
+    backgroundImage: `url(${background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    padding: theme.spacing(20, 20, 40),
   },
-  link: {
-    textDecoration: "none"
-  }
-}))
+  heroButtons: {
+    marginTop: theme.spacing(8),
+  },
+}));
 
-export const Root = () => {
-  const classes = useStyles()
-  // const history = useHistory()
+export default function Root() {
+  const classes = useStyles();
+
   return (
-    <motion.div
-      animate={{ x: 0 }}
-      initial={{ x: 800 }}
-      exit={{ x: -800 }}
-      transition={{ duration: 0.4 }}>
-      <div className="App">
-        <img style={{ display: 'none' }} src={Image01} alt="increase priority" />
-        <div className="module--spacing--small"></div>
-        <div>
-          <Box textAlign="center" className={classes.box}>
-            <Typography variant="h6" align="center" color="inherit" >
-              <Link to="/signup" className={classes.link}>
-                ユーザー登録
-              </Link>
-              してサービスを使う
-            </Typography>
-          </Box>
-        </div>
-        <Box textAlign="center" className={classes.box}>
-          <Typography variant="h6">
-            <Link to="/abouts" className={classes.link}>
-              About
-            </Link>
-          </Typography>
-        </Box>
-      </div>
-    </motion.div>
+    <React.Fragment>
+      <motion.div
+        animate={{ x: 0 }}
+        initial={{ x: 800 }}
+        exit={{ x: -800 }}
+        transition={{ duration: 0.4 }}>
+        <CssBaseline />
+        <main>
+          <div className={classes.heroContent}>
+            <Container maxWidth="xl">
+              <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
+                セーフパーソンを見つけるオンラインカウンセリングサービスです
+              </Typography>
+              <Typography variant="h4" align="center" color="textPrimary" paragraph>
+                「困り感」のある子どもたちが求めている支援者「セーフパーソン」
+              </Typography>
+              <Typography variant="h4" align="center" color="textPrimary" paragraph>
+                安心してわからないこと、困ったことを相談したり聞いたりできる
+              </Typography>
+              <div className={classes.heroButtons}>
+                <Grid container spacing={5} justifyContent="center">
+                  <Grid item>
+                    <Button
+                      component={Link}
+                      variant="contained"
+                      color="inherit"
+                      to="/signup"
+                    >
+                      ユーザー登録
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      variant="contained"
+                      color="inherit"
+                      component={Link}
+                      to="/abouts"
+                    >
+                      ABOUT
+                    </Button>
+                  </Grid>
+                </Grid>
+              </div>
+            </Container>
+          </div>
+        </main>
+      </motion.div>
+    </React.Fragment>
   );
 }
-
-export default Root;
