@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion";
 
-import background from "../../images/top-image.jpeg";
+import background from "../../images/top02-image.jpeg";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,10 +41,10 @@ export default function Root() {
               <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
                 セーフパーソンを見つけるオンラインカウンセリングサービスです
               </Typography>
-              <Typography variant="h4" align="center" color="textPrimary" paragraph>
+              <Typography variant="h5" align="center" color="textPrimary" paragraph>
                 「困り感」のある子どもたちが求めている支援者「セーフパーソン」
               </Typography>
-              <Typography variant="h4" align="center" color="textPrimary" paragraph>
+              <Typography variant="h5" align="center" color="textPrimary" paragraph>
                 安心してわからないこと、困ったことを相談したり聞いたりできる
               </Typography>
               <div className={classes.heroButtons}>
