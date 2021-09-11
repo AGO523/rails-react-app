@@ -280,7 +280,7 @@ const Users: React.FC = () => {
         open={alertMessageOpen}
         setOpen={setAlertMessageOpen}
         severity="success"
-        message="マッチングが成立しました!"
+        message="チャットができるようになりました!"
       />
     </>
   )

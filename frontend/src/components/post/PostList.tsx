@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import PostForm from "./PostForm"
 import PostItem from "./PostItem"
 import OutlinedCard from "./PostCard"
+import PostModal from "./PostModal";
 
 import { getPosts } from "../../lib/api/posts"
 import { Post } from "../../interfaces/index"
@@ -41,9 +42,7 @@ const PostList: React.FC = () => {
         <Grid container direction="row" justifyContent="center">
           <Grid item>
             <OutlinedCard />
-            <PostForm
-              handleGetPosts={handleGetPosts}
-            />
+            <PostModal />
             {posts?.map((post: Post) => {
               return (
                 <PostItem
