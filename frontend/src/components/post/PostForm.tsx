@@ -92,7 +92,7 @@ const PostForm = ({ handleGetPosts }: PostFormProps) => {
     <>
       <form className={classes.form} noValidate onSubmit={handleCreatePost}>
         <TextField
-          placeholder="Hello World"
+          placeholder="Let's Post!"
           variant="outlined"
           multiline
           fullWidth

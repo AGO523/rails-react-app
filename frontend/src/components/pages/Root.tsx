@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion";
 
-import Background from "../../images/top02-image.jpeg";
+import Background from "../../images/top03-image.jpeg";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
   heroButtons: {
     marginTop: theme.spacing(15),
+  },
+  content: {
+    color: "white"
   },
 }));
 
@@ -38,14 +41,14 @@ export default function Root() {
         <main>
           <div className={classes.heroContent}>
             <Container maxWidth="xl">
-              <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
-                セーフパーソンを見つけるオンラインカウンセリングサービスです
+              <Typography className={classes.content} component="h1" variant="h3" align="center" gutterBottom>
+                「困り感」のある子どもが求めている支援者「セーフパーソン」
               </Typography>
-              <Typography variant="h5" align="center" color="textPrimary" paragraph>
-                「困り感」のある子どもたちが求めている支援者「セーフパーソン」
+              <Typography className={classes.content} variant="h5" align="center" paragraph>
+                不登校や発達障害など「困り感」のある子どもたちのママ、パパ
               </Typography>
-              <Typography variant="h5" align="center" color="textPrimary" paragraph>
-                安心してわからないこと、困ったことを相談したり聞いたりできる
+              <Typography className={classes.content} variant="h5" align="center" paragraph>
+                みんなの頑張りを共有しよう
               </Typography>
               <div className={classes.heroButtons}>
                 <Grid container spacing={5} justifyContent="center">

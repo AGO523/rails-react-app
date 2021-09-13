@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   mainTitle: {
-    color: "blue",
+    color: "#f87ede",
   }
 });
 

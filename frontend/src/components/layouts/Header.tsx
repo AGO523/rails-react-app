@@ -23,11 +23,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   linkBtn: {
     textTransform: "none",
-    marginLeft: theme.spacing(1)
-
+    marginLeft: theme.spacing(0.5),
   },
   bar: {
     backgroundColor: "#fff"
+  },
+  buttons: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 'auto',
+    marginBottom: 'auto',
   }
 }))
 
@@ -41,46 +46,55 @@ const Header: React.FC = () => {
       if (isSignedIn) {
         return (
           <>
-            <IconButton
-              component={Link}
-              to="/users"
-              edge="start"
-              className={classes.linkBtn}
-              color="primary"
-            >
-              <SearchIcon />
-              見つける
-            </IconButton>
-            <IconButton
-              component={Link}
-              to="/posts"
-              edge="start"
-              className={classes.linkBtn}
-              color="primary"
-            >
-              <BorderColorIcon />
-              ポスト
-            </IconButton>
-            <IconButton
-              component={Link}
-              to="/chat_rooms"
-              edge="start"
-              className={classes.linkBtn}
-              color="primary"
-            >
-              <ChatBubbleIcon />
-              チャット
-            </IconButton>
-            <IconButton
-              component={Link}
-              to="/home"
-              edge="start"
-              className={classes.linkBtn}
-              color="primary"
-            >
-              <PersonIcon />
-              ホーム
-            </IconButton>
+            <div className={classes.buttons}>
+              <IconButton
+                component={Link}
+                to="/users"
+                edge="start"
+                className={classes.linkBtn}
+                color="primary"
+                size="medium"
+              >
+                <SearchIcon />
+                サーチ
+              </IconButton>
+
+              <IconButton
+                component={Link}
+                to="/posts"
+                edge="start"
+                className={classes.linkBtn}
+                color="primary"
+                size="medium"
+              >
+                <BorderColorIcon />
+                ポスト
+              </IconButton>
+
+              <IconButton
+                component={Link}
+                to="/chat_rooms"
+                edge="start"
+                className={classes.linkBtn}
+                color="primary"
+                size="medium"
+              >
+                <ChatBubbleIcon />
+                チャット
+              </IconButton>
+
+              <IconButton
+                component={Link}
+                to="/home"
+                edge="start"
+                className={classes.linkBtn}
+                color="primary"
+                size="medium"
+              >
+                <PersonIcon />
+                ホーム
+              </IconButton>
+            </div>
           </>
         )
       } else {
@@ -92,8 +106,10 @@ const Header: React.FC = () => {
               edge="start"
               className={classes.linkBtn}
               color="primary"
+              size="small"
             >
               <ExitToAppIcon />
+              サインイン
             </IconButton>
           </>
         )
@@ -116,8 +132,8 @@ const Header: React.FC = () => {
           >
             TeamTeaching
           </Typography>
-          <AuthButtons />
         </Toolbar>
+        <AuthButtons />
       </AppBar>
     </>
   )

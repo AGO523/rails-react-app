@@ -5,7 +5,7 @@ import PostForm from './PostForm';
 import { getPosts } from "../../lib/api/posts"
 import { Post } from "../../interfaces/index"
 import Button from "@material-ui/core/Button"
-import { pink } from "@material-ui/core/colors";
+
 
 function getModalStyle() {
   const top = 50
@@ -49,6 +49,7 @@ export default function PostModal() {
     setOpen(false);
   };
 
+
   const handleGetPosts = async () => {
     const { data } = await getPosts()
 
@@ -58,6 +59,7 @@ export default function PostModal() {
   useEffect(() => {
     handleGetPosts()
   }, [])
+
 
   const body = (
     <div style={modalStyle} className={classes.paper}>

@@ -11,11 +11,9 @@ import IconButton from "@material-ui/core/IconButton"
 import Typography from "@material-ui/core/Typography"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
-import ShareIcon from "@material-ui/icons/Share"
 import DeleteIcon from "@material-ui/icons/Delete"
-import MoreVertIcon from "@material-ui/icons/MoreVert"
 
-import PostModal from "./PostModal";
+import UserModal from "./UserModal"
 import { Post } from "../../interfaces/index"
 import { deletePost } from "../../lib/api/posts"
 // import userEvent from "@testing-library/user-event"
@@ -62,10 +60,6 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
               U
             </Avatar>
           }
-          action={
-
-            <PostModal />
-          }
           title={post.name}
         />
         {post.image?.url ?
@@ -89,9 +83,7 @@ const PostItem = ({ post, handleGetPosts }: PostItemProps) => {
           <IconButton onClick={() => like ? setLike(false) : setLike(true)}>
             {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
-          <IconButton>
-            <ShareIcon />
-          </IconButton>
+          <UserModal />
           <div className={classes.delete}>
             <IconButton
               onClick={() => handleDeletePost(post.id)}

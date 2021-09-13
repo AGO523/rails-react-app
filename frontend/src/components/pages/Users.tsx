@@ -182,14 +182,6 @@ const Users: React.FC = () => {
                           titleTypographyProps={{ variant: 'h5' }}
                           title={user.name}
                         />
-                        {/* <Typography
-                            variant="body2"
-                            component="p"
-                            gutterBottom
-                            style={{ marginTop: "0.5rem", textAlign: "center" }}
-                          >
-                            {user.name}
-                          </Typography> */}
                         <CardContent>
                           <Typography
                             variant="body1"
