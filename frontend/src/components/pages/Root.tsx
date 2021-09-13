@@ -42,10 +42,10 @@ export default function Root() {
           <div className={classes.heroContent}>
             <Container maxWidth="xl">
               <Typography className={classes.content} component="h1" variant="h3" align="center" gutterBottom>
-                「困り感」のある子どもが求めている支援者「セーフパーソン」
+                「困り感」のある子どもを支えるママ、パパのためのサービスです
               </Typography>
               <Typography className={classes.content} variant="h5" align="center" paragraph>
-                不登校や発達障害など「困り感」のある子どもたちのママ、パパ
+                不登校や発達障害など「困り感」のある子どもと寄り添うママ、パパ
               </Typography>
               <Typography className={classes.content} variant="h5" align="center" paragraph>
                 みんなの頑張りを共有しよう
@@ -81,3 +81,4 @@ export default function Root() {
     </React.Fragment>
   );
 }
+
