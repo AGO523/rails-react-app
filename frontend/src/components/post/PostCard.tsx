@@ -32,18 +32,19 @@ export default function OutlinedCard() {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.mainTitle} variant="h5" component="h2">
-          学習の広場
+          子どもの成長をシェアしよう
         </Typography>
         <Typography variant="body1" component="p">
-          ・先生たちと一緒に学習する内容を知ることができます。
+          ・日々の成長をシェアできます。
         </Typography>
         <Typography variant="body1" component="p">
-          ・気になる先生のページに行って、その先生の詳しいことを知ることができます。
+          ・子どもたちの支援に有効だったことをシェアできます。
         </Typography>
         <Typography variant="body1" component="p">
-          ・先生に学んだことを知らせることができます。
+          ・目から鱗だった知識や学習をシェアしましょう。
         </Typography>
       </CardContent>
     </Card>
   );
 }
+
